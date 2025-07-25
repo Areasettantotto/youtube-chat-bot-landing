@@ -1,0 +1,38 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local env files
+.env
+.env.local
+.env.*.local
+
+# Vite cache
+.vite/
+
+# VSCode settings
+.vscode/
+
+# Mac system files
+*.DS_Store
+
+# IDE files
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Python virtual environment
+.venv/
