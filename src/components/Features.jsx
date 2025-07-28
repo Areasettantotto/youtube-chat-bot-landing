@@ -1,11 +1,42 @@
 import { motion } from 'framer-motion'
 
 const features = [
-  "Gestione tentativi per utente",
-  "Messaggi automatici in chat",
-  "Supporto multilingua",
-  "Log degli utenti e dei vincitori",
-  "Configurabile da file .env"
+  {
+    icon: '🎯',
+    title: 'Contest Intelligenti',
+    description: 'Gestione automatica dei contest con prezzo target e tentativi limitati per utente',
+    details: ['Prezzo target configurabile', 'Max 3 tentativi per utente', 'Rilevamento vincitore esatto', 'Assegnazione al più vicino']
+  },
+  {
+    icon: '🌍',
+    title: 'Supporto Multilingua',
+    description: 'Bot disponibile in 5 lingue con messaggi personalizzati per ogni regione',
+    details: ['🇮🇹 Italiano', '🇬🇧 English', '🇷🇺 Русский', '🇨🇳 中文', '🇸🇦 العربية']
+  },
+  {
+    icon: '📊',
+    title: 'Sistema di Logging',
+    description: 'Monitoraggio completo con log dettagliati di tutte le attività',
+    details: ['Log partecipanti', 'Tentativi validi/non validi', 'Errori di sistema', 'Esportazione dati']
+  },
+  {
+    icon: '⚡',
+    title: 'Polling Dinamico',
+    description: 'Ottimizzazione automatica basata sul traffico della chat',
+    details: ['Polling veloce (5s) - traffico alto', 'Polling medio (10s)', 'Polling lento (30s) - traffico basso']
+  },
+  {
+    icon: '🎁',
+    title: 'Sconti Temporali',
+    description: 'Sistema di sconti personalizzabili basati sul tempo di partecipazione',
+    details: ['Sconti fino all\'80%', 'Soglie temporali configurabili', 'Incentivi per partecipazione veloce']
+  },
+  {
+    icon: '🔐',
+    title: 'Sicurezza e Privacy',
+    description: 'Conformità completa alle API YouTube e normative GDPR',
+    details: ['OAuth 2.0 sicuro', 'Dati locali', 'Conformità YouTube', 'Privacy completa']
+  }
 ]
 
 export default function Features() {
@@ -56,35 +87,60 @@ export default function Features() {
   return (
     <motion.section
       id="features"
-      className="w-screen h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 transition-colors snap-start snap-always"
+      className="w-screen min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 transition-colors snap-start snap-always py-20"
       variants={sectionVariants}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
     >
-      <div className="max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto text-center">
+      <div className="max-w-7xl mx-auto text-center">
         <motion.h2
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-8 lg:mb-12 text-gray-900 dark:text-white"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white"
           variants={itemVariants}
         >
-          🔧 Funzionalità principali
+          🔧 Funzionalità Avanzate
         </motion.h2>
-        <motion.ul
-          className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 text-left"
+        <motion.p
+          className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12"
+          variants={itemVariants}
+        >
+          Il bot più completo per contest interattivi su YouTube Live
+        </motion.p>
+
+        <motion.div
+          className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
           variants={containerVariants}
         >
-          {features.map((item, idx) => (
-            <motion.li
+          {features.map((feature, idx) => (
+            <motion.div
               key={idx}
-              className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 transition-colors text-sm sm:text-base lg:text-lg text-gray-800 dark:text-gray-100 cursor-pointer"
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors cursor-pointer group"
               variants={itemVariants}
-              whileHover={{ scale: 1.08 }}
+              whileHover={{ scale: 1.05, y: -5 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
-              <span className="mr-2 text-green-500 dark:text-green-400">✅</span> {item}
-            </motion.li>
+              <div className="text-center">
+                <div className="text-4xl mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                  {feature.description}
+                </p>
+                <div className="space-y-2">
+                  {feature.details.map((detail, detailIdx) => (
+                    <div
+                      key={detailIdx}
+                      className="text-xs bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full text-gray-700 dark:text-gray-300"
+                    >
+                      {detail}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           ))}
-        </motion.ul>
+        </motion.div>
       </div>
     </motion.section>
   )

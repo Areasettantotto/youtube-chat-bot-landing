@@ -87,6 +87,25 @@ export default function Footer() {
           className="border-t border-gray-200 dark:border-gray-700 pt-6"
           variants={childVariants}
         >
+          <div className="text-center mb-4">
+            <motion.a
+              href="#policy"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-900/40 transition-colors mr-4"
+            >
+              📋 Privacy Policy
+            </motion.a>
+            <motion.a
+              href="mailto:areasettantotto@icloud.com"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+            >
+              📧 Supporto
+            </motion.a>
+          </div>
+
           <div className="text-sm sm:text-base text-gray-500 dark:text-gray-400 space-y-2">
             <p>© 2025 Marco Busato. Tutti i diritti riservati.</p>
             <p className="text-xs text-gray-400 dark:text-gray-500">

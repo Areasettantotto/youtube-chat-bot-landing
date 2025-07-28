@@ -1,6 +1,10 @@
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Features from './components/Features'
+import SetupGuide from './components/SetupGuide'
+import MultilingualSupport from './components/MultilingualSupport'
+import LoggingSystem from './components/LoggingSystem'
+import Troubleshooting from './components/Troubleshooting'
 import Footer from './components/Footer'
 import { useEffect, useState } from 'react'
 
@@ -27,6 +31,10 @@ function App() {
       <Header dark={dark} setDark={setDark} />
       <Hero />
       <Features />
+      <SetupGuide />
+      <MultilingualSupport />
+      <LoggingSystem />
+      <Troubleshooting />
       <Footer />
     </div>
   )
