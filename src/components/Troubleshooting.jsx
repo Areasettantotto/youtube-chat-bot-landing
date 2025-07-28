@@ -113,7 +113,7 @@ export default function Troubleshooting() {
   return (
     <motion.section
       id="troubleshooting"
-      className="w-screen min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-red-50 to-orange-100 dark:from-gray-800 dark:to-gray-900 transition-colors snap-start snap-always py-20"
+      className="w-screen min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-red-50 to-orange-100 dark:from-gray-800 dark:to-gray-900 transition-colors snap-start snap-always py-20 pt-16"
       variants={sectionVariants}
       initial="hidden"
       whileInView="show"

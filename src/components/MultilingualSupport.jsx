@@ -5,35 +5,35 @@ const languages = [
     code: 'en',
     name: 'English',
     flag: '🇬🇧',
-    file: 'messages/messages.json',
+    file: 'messages.json',
     botLabel: '🤖 [BOT]'
   },
   {
     code: 'it',
     name: 'Italiano',
     flag: '🇮🇹',
-    file: 'messages/messages-italian.json',
+    file: 'messages-italian.json',
     botLabel: '🤖 [BOT]'
   },
   {
     code: 'ru',
     name: 'Русский',
     flag: '🇷🇺',
-    file: 'messages/messages-russian.json',
+    file: 'messages-russian.json',
     botLabel: '🤖 [БОТ]'
   },
   {
     code: 'zh',
     name: '中文',
     flag: '🇨🇳',
-    file: 'messages/messages-cinese.json',
+    file: 'messages-cinese.json',
     botLabel: '🤖 [机器人]'
   },
   {
     code: 'ar',
     name: 'العربية',
     flag: '🇸🇦',
-    file: 'messages/messages-arabo.json',
+    file: 'messages-arabo.json',
     botLabel: '🤖 [بوت]'
   }
 ]
@@ -63,13 +63,13 @@ export default function MultilingualSupport() {
   return (
     <motion.section
       id="multilingual"
-      className="w-screen min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 transition-colors snap-start snap-always py-20"
+      className="w-screen min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 transition-colors snap-start snap-always py-20 pt-24"
       variants={sectionVariants}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <div className="max-w-6xl mx-auto text-center">
+      <div className="max-w-7xl mx-auto text-center">
         <motion.div className="mb-12" variants={itemVariants}>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
             🌍 Supporto Multilingua
@@ -80,28 +80,27 @@ export default function MultilingualSupport() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12"
           variants={itemVariants}
         >
           {languages.map((lang, idx) => (
             <motion.div
               key={lang.code}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700"
-              whileHover={{ scale: 1.05, y: -5 }}
+              className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-200 dark:border-gray-700"
+              whileHover={{ scale: 1.03, y: -3 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
               <div className="text-center">
-                <div className="text-4xl mb-3">{lang.flag}</div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                  {lang.name}
-                </h3>
-                <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 mb-3">
-                  <code className="text-sm text-gray-700 dark:text-gray-300">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <span className="text-2xl">{lang.flag}</span>
+                  <h3 className="text-base font-bold text-gray-900 dark:text-white">
+                    {lang.name}
+                  </h3>
+                </div>
+                <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-2 mb-2">
+                  <code className="text-xs text-gray-700 dark:text-gray-300">
                     {lang.file}
                   </code>
-                </div>
-                <div className="text-sm font-mono bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full">
-                  {lang.botLabel}
                 </div>
               </div>
             </motion.div>
@@ -124,14 +123,6 @@ MESSAGES_FILE=messages/messages-russian.json   # 🇷🇺 Russian
 MESSAGES_FILE=messages/messages-cinese.json    # 🇨🇳 Chinese
 MESSAGES_FILE=messages/messages-arabo.json     # 🇸🇦 Arabic`}</code>
             </pre>
-          </div>
-          <div className="mt-6 text-center">
-            <p className="text-gray-600 dark:text-gray-300">
-              Il bot rileva automaticamente la lingua selezionata e mostra:
-            </p>
-            <div className="mt-3 text-lg font-semibold text-blue-600 dark:text-blue-400">
-              🌍 Loaded messages: Italiano (messages/messages-italian.json)
-            </div>
           </div>
         </motion.div>
       </div>

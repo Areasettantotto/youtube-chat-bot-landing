@@ -5,7 +5,7 @@ const features = [
     icon: '🎯',
     title: 'Contest Intelligenti',
     description: 'Gestione automatica dei contest con prezzo target e tentativi limitati per utente',
-    details: ['Prezzo target configurabile', 'Max 3 tentativi per utente', 'Rilevamento vincitore esatto', 'Assegnazione al più vicino']
+    details: ['Prezzo target configurabile', 'Tentativi per utenti configurabili', 'Rilevamento automatico del vincitore', 'Possibilità di premiare il partecipante che si avvicina di più al prezzo target']
   },
   {
     icon: '🌍',
@@ -44,19 +44,15 @@ export default function Features() {
   const sectionVariants = {
     hidden: {
       opacity: 0,
-      y: 50,
-      scale: 0.95,
-      filter: 'blur(10px)'
+      y: 20
     },
     show: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      filter: 'blur(0px)',
       transition: {
-        duration: 1,
-        ease: [0.22, 1, 0.36, 1],
-        staggerChildren: 0.15
+        duration: 0.6,
+        ease: "easeOut",
+        staggerChildren: 0.08
       }
     }
   }
@@ -71,29 +67,27 @@ export default function Features() {
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 40, scale: 0.95, filter: 'blur(4px)' },
+    hidden: { opacity: 0, y: 15 },
     show: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      filter: 'blur(0px)',
       transition: {
-        duration: 0.7,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
+        duration: 0.4,
+        ease: "easeOut"
+      }
+    }
   }
 
   return (
     <motion.section
       id="features"
-      className="w-screen min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 transition-colors snap-start snap-always py-20"
+      className="w-screen min-h-screen flex flex-col justify-start items-center px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 transition-colors snap-start snap-always py-20 pt-20"
       variants={sectionVariants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.2 }}
     >
-      <div className="max-w-7xl mx-auto text-center">
+      <div className="max-w-7xl mx-auto text-center mt-16">
         <motion.h2
           className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white"
           variants={itemVariants}
@@ -116,8 +110,8 @@ export default function Features() {
               key={idx}
               className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors cursor-pointer group"
               variants={itemVariants}
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              whileHover={{ scale: 1.02, y: -2 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 25 }}
             >
               <div className="text-center">
                 <div className="text-4xl mb-4">{feature.icon}</div>

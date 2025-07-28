@@ -99,7 +99,7 @@ export default function LoggingSystem() {
   return (
     <motion.section
       id="logging"
-      className="w-screen min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 transition-colors snap-start snap-always py-20"
+      className="w-screen min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 transition-colors snap-start snap-always py-20 pt-16"
       variants={sectionVariants}
       initial="hidden"
       whileInView="show"

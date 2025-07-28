@@ -4,27 +4,25 @@ export default function Footer() {
   const sectionVariants = {
     hidden: {
       opacity: 0,
-      y: 50,
-      scale: 0.95
+      y: 20
     },
     show: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
-        duration: 1,
-        ease: [0.22, 1, 0.36, 1],
-        staggerChildren: 0.2
+        duration: 0.6,
+        ease: "easeOut",
+        staggerChildren: 0.1
       }
     }
   }
 
   const childVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 15 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+      transition: { duration: 0.5, ease: "easeOut" }
     }
   }
 
@@ -36,11 +34,11 @@ export default function Footer() {
 
   return (
     <motion.footer
-      className="w-screen h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors snap-start snap-always"
+      className="w-screen h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors snap-start snap-always pt-16"
       variants={sectionVariants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.2 }}
     >
       <div className="max-w-4xl mx-auto">
         <motion.div
