@@ -60,17 +60,42 @@ Landing page completa per il **YouTube Live Chat Contest Bot**, un sistema avanz
 - **Scroll snapping** per navigazione fluida
 - **Blur effects** per transizioni eleganti
 
-### Dark/Light Mode
-- **Toggle minimale** nel header
-- **Transizioni smooth** tra temi
-- **Persistenza** tramite localStorage
-- **Auto-detection** preferenze sistema
+### Header System v2.0
+- **Logo aziendale** con branding professionale
+- **Selezione lingua** con 5 lingue supportate
+- **Menu desktop** con navigazione diretta
+- **Menu mobile** con sidebar animata
+- **Dark/Light mode** toggle ottimizzato
+- **Sistema multilingua** con hook personalizzato
 
 ### Responsive Design
 - **Mobile-first** approach
 - **Breakpoints** per tutti i dispositivi
 - **Grid layout** adattivo
 - **Typography** scalabile
+
+## 🎯 Header Modulare v2.0
+
+Il nuovo sistema Header è stato completamente ristrutturato per essere modulare e scalabile:
+
+### Componenti
+- **Logo**: Branding professionale con gradiente e animazioni
+- **LanguageSelector**: Dropdown 5 lingue con flag e persistenza
+- **ThemeToggle**: Switch dark/light mode ottimizzato
+- **MobileMenu**: Sidebar animata con hamburger menu
+
+### Sistema Multilingua
+- **Hook useLanguage**: Gestione centralizzata traduzioni
+- **5 lingue supportate**: IT, EN, RU, ZH, AR
+- **Persistenza localStorage**: Mantiene selezione utente
+- **Facile estensibilità**: Aggiungere nuove lingue è semplice
+
+### Documentazione Completa
+Vedi `HEADER_DOCUMENTATION.md` per:
+- Guide implementazione dettagliate
+- Esempi di utilizzo del sistema i18n
+- Personalizzazioni design e layout
+- Best practices e ottimizzazioni
 
 ## 🔧 Setup e Sviluppo
 
@@ -93,7 +118,12 @@ npm run preview
 ```
 src/
 ├── components/
-│   ├── Header.jsx              # Header con dark mode toggle
+│   ├── Header.jsx              # Header modulare v2.0
+│   ├── header/                 # Sotto-componenti header
+│   │   ├── Logo.jsx           # Logo aziendale animato
+│   │   ├── LanguageSelector.jsx # Dropdown selezione lingua
+│   │   ├── ThemeToggle.jsx    # Switch dark/light mode
+│   │   └── MobileMenu.jsx     # Menu mobile con sidebar
 │   ├── Hero.jsx                # Sezione hero principale
 │   ├── Features.jsx            # Funzionalità avanzate
 │   ├── SetupGuide.jsx          # Guida setup interattiva
@@ -105,7 +135,9 @@ src/
 ├── App.jsx                     # App principale
 ├── Router.jsx                  # Router semplice
 ├── main.jsx                    # Entry point
-└── index.css                   # Stili Tailwind
+├── index.css                   # Stili Tailwind
+└── hooks/
+    └── useLanguage.js          # Hook multilingua personalizzato
 ```
 
 ## 🔗 Navigazione

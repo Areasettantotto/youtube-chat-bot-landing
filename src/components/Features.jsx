@@ -81,7 +81,7 @@ export default function Features() {
   return (
     <motion.section
       id="features"
-      className="w-screen min-h-screen flex flex-col justify-start items-center px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 transition-colors snap-start snap-always py-20 pt-20"
+      className="w-screen min-h-screen flex flex-col justify-start items-center px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 transition-colors snap-start snap-always py-20 pt-24"
       variants={sectionVariants}
       initial="hidden"
       whileInView="show"

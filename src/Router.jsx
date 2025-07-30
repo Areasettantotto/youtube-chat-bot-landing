@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { LanguageProvider } from './hooks/useLanguage.jsx'
 import App from './App'
 import PolicyPage from './components/PolicyPage'
 
@@ -18,11 +19,11 @@ function Router() {
     return () => window.removeEventListener('hashchange', handleHashChange)
   }, [])
 
-  if (currentPage === 'policy') {
-    return <PolicyPage />
-  }
-
-  return <App />
+  return (
+    <LanguageProvider>
+      {currentPage === 'policy' ? <PolicyPage /> : <App />}
+    </LanguageProvider>
+  )
 }
 
 export default Router

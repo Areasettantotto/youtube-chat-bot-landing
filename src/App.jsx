@@ -6,6 +6,7 @@ import MultilingualSupport from './components/MultilingualSupport'
 import LoggingSystem from './components/LoggingSystem'
 import Troubleshooting from './components/Troubleshooting'
 import Footer from './components/Footer'
+// import LanguageTestPanel from './components/header/LanguageTestPanel'
 import { useEffect, useState } from 'react'
 
 function App() {
@@ -36,6 +37,9 @@ function App() {
       <LoggingSystem />
       <Troubleshooting />
       <Footer />
+
+      {/* 🧪 Pannello di test per le traduzioni - DISABILITATO */}
+      {/* {process.env.NODE_ENV === 'development' && <LanguageTestPanel />} */}
     </div>
   )
 }

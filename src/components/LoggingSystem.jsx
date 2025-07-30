@@ -64,7 +64,7 @@ EXTRADISCOUNT_THRESHOLDS=[
   {
     title: 'Polling API Avanzato',
     code: `# Polling dinamico basato sul traffico
-MIN_POLLING=5000              # Traffico alto
+MIN_POLLING=5000             # Traffico alto
 MID_POLLING=10000            # Traffico medio
 MAX_POLLING=30000            # Traffico basso
 HIGH_TRAFFIC_THRESHOLD=10    # Soglia traffico alto

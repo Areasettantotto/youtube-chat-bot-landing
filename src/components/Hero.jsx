@@ -40,13 +40,13 @@ export default function Hero() {
         className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 text-gray-900 dark:text-white"
         variants={childVariants}
       >
-        🎯 YouTube Live Chat Bot
+        🎯 Live Chat Guess
       </motion.h1>
       <motion.p
         className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xl xl:max-w-2xl mb-8"
         variants={childVariants}
       >
-        Coinvolgi il tuo pubblico con un gioco a premi in tempo reale durante le tue dirette.
+        Coinvolgi il tuo pubblico con un gioco a premi in tempo reale durante le tue dirette YouTube.
       </motion.p>
       <motion.a
         href="#features"
