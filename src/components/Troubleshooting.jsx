@@ -132,9 +132,6 @@ export default function Troubleshooting() {
         <motion.div className="grid lg:grid-cols-3 gap-6 sm:gap-8" variants={itemVariants}>
           {/* Problem List */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
-              🚨 Problemi Comuni
-            </h3>
             <div className="space-y-2 sm:space-y-3">
               {troubleshootingItems.map((item) => (
                 <motion.button

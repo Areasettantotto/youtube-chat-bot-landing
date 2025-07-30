@@ -54,7 +54,7 @@ LOGS_DIR=logs`
   },
   {
     title: 'Soglie Sconto Personalizzate',
-    code: `# 3 periodi temporali con sconti diversi
+    code: `# Illimitate configurazioni temporali con sconti diversi
 EXTRADISCOUNT_THRESHOLDS=[
   {"min":0,"max":5,"discount":80},
   {"min":6,"max":15,"discount":70},

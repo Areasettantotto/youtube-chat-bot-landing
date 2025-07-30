@@ -5,36 +5,31 @@ const languages = [
     code: 'en',
     name: 'English',
     flag: '🇬🇧',
-    file: 'messages.json',
-    botLabel: '🤖 [BOT]'
+    file: 'default.json'
   },
   {
     code: 'it',
     name: 'Italiano',
     flag: '🇮🇹',
-    file: 'messages-italian.json',
-    botLabel: '🤖 [BOT]'
+    file: 'italian.json'
   },
   {
     code: 'ru',
     name: 'Русский',
     flag: '🇷🇺',
-    file: 'messages-russian.json',
-    botLabel: '🤖 [БОТ]'
+    file: 'russian.json'
   },
   {
     code: 'zh',
     name: '中文',
     flag: '🇨🇳',
-    file: 'messages-cinese.json',
-    botLabel: '🤖 [机器人]'
+    file: 'cinese.json'
   },
   {
     code: 'ar',
     name: 'العربية',
     flag: '🇸🇦',
-    file: 'messages-arabo.json',
-    botLabel: '🤖 [بوت]'
+    file: 'arabo.json'
   }
 ]
 
@@ -101,11 +96,6 @@ export default function MultilingualSupport() {
                   <code className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 break-all">
                     {lang.file}
                   </code>
-                </div>
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-2 sm:p-3">
-                  <span className="text-xs sm:text-sm lg:text-base font-semibold text-blue-700 dark:text-blue-300">
-                    {lang.botLabel}
-                  </span>
                 </div>
               </div>
             </motion.div>
