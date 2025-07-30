@@ -81,7 +81,7 @@ export default function Features() {
   return (
     <motion.section
       id="features"
-      className="w-screen min-h-screen flex flex-col justify-start items-center px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 transition-colors snap-start snap-always py-20 pt-24"
+      className="w-screen min-h-screen flex flex-col justify-start items-center px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 transition-colors snap-start snap-always py-20 pt-24 scroll-mt-16"
       variants={sectionVariants}
       initial="hidden"
       whileInView="show"
@@ -89,43 +89,43 @@ export default function Features() {
     >
       <div className="max-w-7xl mx-auto text-center mt-16">
         <motion.h2
-          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-white"
           variants={itemVariants}
         >
           🔧 Funzionalità Avanzate
         </motion.h2>
         <motion.p
-          className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12"
+          className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12 px-2"
           variants={itemVariants}
         >
           Il bot più completo per contest interattivi su YouTube Live
         </motion.p>
 
         <motion.div
-          className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
           variants={containerVariants}
         >
           {features.map((feature, idx) => (
             <motion.div
               key={idx}
-              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors cursor-pointer group"
+              className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors cursor-pointer group"
               variants={itemVariants}
               whileHover={{ scale: 1.02, y: -2 }}
               transition={{ type: 'spring', stiffness: 400, damping: 25 }}
             >
               <div className="text-center">
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{feature.icon}</div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                <p className="text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 text-xs sm:text-sm">
                   {feature.description}
                 </p>
-                <div className="space-y-2">
+                <div className="space-y-1 sm:space-y-2">
                   {feature.details.map((detail, detailIdx) => (
                     <div
                       key={detailIdx}
-                      className="text-xs bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full text-gray-700 dark:text-gray-300"
+                      className="text-xs bg-gray-100 dark:bg-gray-700 px-2 sm:px-3 py-1 rounded-full text-gray-700 dark:text-gray-300"
                     >
                       {detail}
                     </div>

@@ -10,10 +10,29 @@
 
   body {
     overflow-x: hidden;
+    line-height: 1.6;
   }
 
   * {
     box-sizing: border-box;
+  }
+
+  /* Migliora lo scroll per sezioni con header fisso */
+  section[id] {
+    scroll-margin-top: 5rem; /* 80px - altezza header + padding */
+  }
+
+  /* Miglioramenti responsive globali */
+  @media (max-width: 640px) {
+    body {
+      font-size: 14px;
+    }
+  }
+
+  /* Gestione overflow text per small devices */
+  .text-responsive {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 }
 

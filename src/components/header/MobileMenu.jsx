@@ -44,21 +44,25 @@ export default function MobileMenu({ isOpen, setIsOpen }) {
   const handleItemClick = (href) => {
     setIsOpen(false)
 
-    // Gestione navigazione
-    if (href === '#policy') {
-      window.location.hash = 'policy'
-    } else if (href === '#hero') {
-      window.location.hash = 'home'
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    } else {
-      window.location.hash = 'home'
-      setTimeout(() => {
-        const element = document.querySelector(href)
+    // Chiudi il menu con un piccolo delay per l'animazione
+    setTimeout(() => {
+      const targetId = href.replace('#', '')
+
+      if (targetId === 'hero') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      } else if (targetId === 'policy') {
+        // Gestione speciale per policy
+        const element = document.getElementById('policy') || document.querySelector('[data-section="policy"]')
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' })
         }
-      }, 100)
-    }
+      } else if (targetId) {
+        const element = document.getElementById(targetId)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }
+    }, 300)
   }
 
   return (
