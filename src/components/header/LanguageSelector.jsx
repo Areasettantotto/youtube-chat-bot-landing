@@ -85,43 +85,45 @@ export default function LanguageSelector() {
         </motion.svg>
       </motion.button>
 
-      {isOpen && (
-        <>
-          {/* Overlay per chiudere il dropdown */}
-          <div
-            className="fixed inset-0 z-10"
-            onClick={() => setIsOpen(false)}
-          />
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Overlay per chiudere il dropdown */}
+            <div
+              className="fixed inset-0 z-40"
+              onClick={() => setIsOpen(false)}
+            />
 
-          <motion.div
-            className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-20"
-            variants={dropdownVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-          >
-            {languages.map((lang) => (
-              <motion.button
-                key={lang.code}
-                onClick={() => handleLanguageChange(lang.code)}
-                className={`w-full flex items-center space-x-3 px-4 py-2 text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${
-                  lang.code === currentLanguage
-                    ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
-                    : 'text-gray-700 dark:text-gray-300'
-                }`}
-                whileHover={{ x: 4 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="text-lg">{lang.flag}</span>
-                <span className="text-sm font-medium">{lang.name}</span>
-                {lang.code === currentLanguage && (
-                  <span className="ml-auto text-blue-500">✓</span>
-                )}
-              </motion.button>
-            ))}
-          </motion.div>
-        </>
-      )}
+            <motion.div
+              className="absolute right-0 mt-2 w-max min-w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50"
+              variants={dropdownVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+            >
+              {languages.map((lang) => (
+                <motion.button
+                  key={lang.code}
+                  onClick={() => handleLanguageChange(lang.code)}
+                  className={`w-full flex items-center space-x-3 px-5 py-3 text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${
+                    lang.code === currentLanguage
+                      ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
+                      : 'text-gray-700 dark:text-gray-300'
+                  }`}
+                  whileHover={{ x: 4 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="text-lg">{lang.flag}</span>
+                  <span className="text-sm font-medium">{lang.name}</span>
+                  {lang.code === currentLanguage && (
+                    <span className="ml-auto text-blue-500">✓</span>
+                  )}
+                </motion.button>
+              ))}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

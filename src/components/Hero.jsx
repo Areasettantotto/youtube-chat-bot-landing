@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
+import { useLanguage } from '../hooks/useLanguage.jsx'
 
 export default function Hero() {
+  const { t } = useLanguage()
   // Variants per animazione fade-in on-scroll
   const sectionVariants = {
     hidden: {
@@ -30,35 +32,37 @@ export default function Hero() {
   return (
     <motion.section
       id="hero"
-      className="w-screen h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-colors snap-start snap-always pt-16 scroll-mt-16"
+      className="w-full min-h-screen flex flex-col justify-center items-center text-center px-3 sm:px-4 lg:px-6 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-colors snap-start snap-always overflow-hidden"
       variants={sectionVariants}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <motion.h1
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 text-gray-900 dark:text-white"
-        variants={childVariants}
-      >
-        🎯 Live Chat Guess
-      </motion.h1>
-      <motion.p
-        className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xl xl:max-w-2xl mb-8"
-        variants={childVariants}
-      >
-        Coinvolgi il tuo pubblico con un gioco a premi in tempo reale durante le tue dirette YouTube.
-      </motion.p>
-      <motion.a
-        href="#features"
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        className="mt-4 inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full shadow-lg transition-all duration-300 text-sm sm:text-base lg:text-lg font-semibold"
-      >
-        Scopri come funziona
-      </motion.a>
+      <div className="w-full max-w-6xl mx-auto pt-20 pb-8">
+        <motion.h1
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white overflow-safe leading-tight"
+          variants={childVariants}
+        >
+          {t('hero.title')}
+        </motion.h1>
+        <motion.p
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xl xl:max-w-2xl mx-auto mb-6 sm:mb-8 px-2 overflow-safe leading-relaxed"
+          variants={childVariants}
+        >
+          {t('hero.subtitle')}
+        </motion.p>
+        <motion.a
+          href="#features"
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full shadow-lg transition-all duration-300 text-sm sm:text-base lg:text-lg font-semibold max-w-xs sm:max-w-sm mx-auto"
+        >
+          {t('hero.cta')}
+        </motion.a>
+      </div>
     </motion.section>
   )
 }

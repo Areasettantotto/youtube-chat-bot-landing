@@ -10,7 +10,14 @@ function Router() {
     // Semplice routing basato sull'hash URL
     const handleHashChange = () => {
       const hash = window.location.hash.substring(1)
-      setCurrentPage(hash || 'home')
+
+      // Solo la policy page ha il suo componente dedicato
+      // Tutti gli altri hash (#setup, #features, etc.) restano nella home
+      if (hash === 'policy') {
+        setCurrentPage('policy')
+      } else {
+        setCurrentPage('home')
+      }
     }
 
     window.addEventListener('hashchange', handleHashChange)

@@ -99,46 +99,46 @@ export default function LoggingSystem() {
   return (
     <motion.section
       id="logging"
-      className="w-screen min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 transition-colors snap-start snap-always py-20 pt-24 scroll-mt-20"
+      className="w-full min-h-screen flex flex-col justify-center items-center px-3 sm:px-4 lg:px-6 bg-gray-50 dark:bg-gray-900 transition-colors snap-start snap-always py-16 sm:py-20 overflow-hidden"
       variants={sectionVariants}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full max-w-7xl mx-auto">
         <motion.div className="text-center mb-8 sm:mb-12" variants={itemVariants}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900 dark:text-white">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white overflow-safe">
             📊 Sistema di Logging Avanzato
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-2">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-2 overflow-safe">
             Monitoraggio completo delle attività del bot con log dettagliati e configurazione flessibile
           </p>
         </motion.div>
 
         {/* Log Types */}
-        <motion.div className="mb-12 sm:mb-16" variants={itemVariants}>
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 text-center">
+        <motion.div className="mb-8 sm:mb-12" variants={itemVariants}>
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 text-center">
             📁 Tipi di Log Generati
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
             {logTypes.map((log, idx) => (
               <motion.div
                 key={idx}
-                className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 shadow-lg border border-gray-200 dark:border-gray-700"
+                className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden"
                 whileHover={{ scale: 1.02, y: -2 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
-                  <div className="flex items-start space-x-3 sm:space-x-4">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl flex-shrink-0">{log.icon}</div>
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <div className="text-xl sm:text-2xl lg:text-3xl flex-shrink-0">{log.icon}</div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-2">
+                    <h4 className="text-sm sm:text-base lg:text-lg font-bold text-gray-900 dark:text-white mb-2 overflow-safe">
                       {log.name}
                     </h4>
-                    <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 mb-3 sm:mb-4">
+                    <p className="text-xs sm:text-sm lg:text-base text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 overflow-safe">
                       {log.description}
                     </p>
                     <div className={`p-2 sm:p-3 lg:p-4 rounded-lg ${log.color}`}>
-                      <code className="text-xs sm:text-sm font-mono break-all block overflow-hidden">
+                      <code className="text-xs sm:text-sm font-mono break-all block overflow-hidden overflow-safe">
                         {log.example}
                       </code>
                     </div>
@@ -150,8 +150,8 @@ export default function LoggingSystem() {
         </motion.div>
 
         {/* Configuration Examples */}
-        <motion.div className="mb-12 sm:mb-16" variants={itemVariants}>
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 text-center">
+        <motion.div className="mb-8 sm:mb-12" variants={itemVariants}>
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 text-center">
             ⚙️ Esempi di Configurazione
           </h3>
 
@@ -162,7 +162,7 @@ export default function LoggingSystem() {
                 <button
                   key={idx}
                   onClick={() => setActiveConfig(idx)}
-                  className={`flex-1 px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap min-w-0 ${
+                  className={`flex-1 px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap min-w-0 overflow-safe ${
                     activeConfig === idx
                       ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-b-2 border-blue-500'
                       : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
@@ -181,7 +181,7 @@ export default function LoggingSystem() {
               className="p-4 sm:p-6"
             >
               <div className="bg-gray-900 rounded-lg p-3 sm:p-4 overflow-x-auto">
-                <pre className="text-green-400 text-xs sm:text-sm leading-relaxed">
+                <pre className="text-green-400 text-xs sm:text-sm leading-relaxed overflow-safe">
                   <code>{configExamples[activeConfig].code}</code>
                 </pre>
               </div>
@@ -191,23 +191,23 @@ export default function LoggingSystem() {
 
         {/* Live Output Example */}
         <motion.div
-          className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg"
+          className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg overflow-hidden"
           variants={itemVariants}
         >
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 text-center">
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 text-center">
             🖥️ Output Console in Tempo Reale
           </h3>
           <div className="bg-gray-900 rounded-lg p-3 sm:p-4 lg:p-6 overflow-x-auto">
-            <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm font-mono">
-              <div className="text-blue-400">📋 Loaded languages config: 5 languages available</div>
-              <div className="text-green-400">🌍 Loaded messages: Italiano (messages/messages-italian.json)</div>
-              <div className="text-yellow-400">⚙️ Loaded 3 custom discount thresholds from .env</div>
-              <div className="text-purple-400">📁 Directory logs created automatically</div>
-              <div className="text-green-400">🚀 Listening to chat...</div>
-              <div className="text-blue-400">🟢 Contest started, from now you have 20 minutes and 3 attempts!</div>
-              <div className="text-white">💬 New message from User123: "60.50"</div>
-              <div className="text-green-400">✅ Valid attempt logged: User123</div>
-              <div className="text-red-400">🎉 EXACT WINNER: User123 with €60.56 - Extra discount: 80%</div>
+            <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm font-mono overflow-safe">
+              <div className="text-blue-400 break-all">📋 Loaded languages config: 5 languages available</div>
+              <div className="text-green-400 break-all">🌍 Loaded messages: Italiano (messages/messages-italian.json)</div>
+              <div className="text-yellow-400 break-all">⚙️ Loaded 3 custom discount thresholds from .env</div>
+              <div className="text-purple-400 break-all">📁 Directory logs created automatically</div>
+              <div className="text-green-400 break-all">🚀 Listening to chat...</div>
+              <div className="text-blue-400 break-all">🟢 Contest started, from now you have 20 minutes and 3 attempts!</div>
+              <div className="text-white break-all">💬 New message from User123: "60.50"</div>
+              <div className="text-green-400 break-all">✅ Valid attempt logged: User123</div>
+              <div className="text-red-400 break-all">🎉 EXACT WINNER: User123 with €60.56 - Extra discount: 80%</div>
             </div>
           </div>
         </motion.div>
