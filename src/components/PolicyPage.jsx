@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useEffect } from 'react'
 
 const policySection = {
   title: "Privacy Policy e Termini di Servizio",
@@ -85,6 +86,10 @@ const policySection = {
 }
 
 export default function PolicyPage() {
+  // Scroll automatico in alto all'apertura della pagina
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' })
+  }, [])
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     show: {
