@@ -22,7 +22,7 @@ const languages = {
       'header.menu': 'Menu',
 
       // Hero section
-      'hero.title': '🎯 Live Chat Guess',
+      'hero.title': '💬 Live Chat Guess',
       'hero.subtitle': 'Coinvolgi il tuo pubblico con un gioco a premi in tempo reale durante le tue dirette.',
       'hero.cta': 'Scopri come funziona',
 

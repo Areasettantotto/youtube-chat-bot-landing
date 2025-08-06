@@ -95,7 +95,7 @@ export default function LanguageSelector() {
             />
 
             <motion.div
-              className="absolute right-0 mt-2 w-max min-w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50"
+              className="absolute right-0 mt-2 w-56 min-w-[14rem] bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 px-2 z-50"
               variants={dropdownVariants}
               initial="hidden"
               animate="visible"
