@@ -69,9 +69,8 @@ export default function SetupGuide() {
 	}
 
 	return (
-		<motion.section
-			id="setup"
-			className="w-full min-h-screen flex flex-col justify-center items-center px-3 sm:px-4 lg:px-6 bg-white dark:bg-gray-900 transition-colors snap-start snap-always py-16 sm:py-20 overflow-hidden"
+	<motion.section
+	  className="w-full min-h-screen flex flex-col justify-center items-center px-3 sm:px-4 lg:px-6 bg-white dark:bg-gray-900 transition-colors pt-20 sm:pt-24 overflow-hidden"
 			variants={sectionVariants}
 			initial="hidden"
 			whileInView="show"

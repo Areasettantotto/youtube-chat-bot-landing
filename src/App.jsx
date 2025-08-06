@@ -28,15 +28,15 @@ function App() {
 
   return (
     <div className="font-sans min-h-screen w-full overflow-x-hidden">
-      <div className="w-full h-screen overflow-y-auto overflow-x-hidden snap-y snap-mandatory scroll-smooth">
+      <div className="w-full min-h-screen overflow-x-hidden">
         <Header dark={dark} setDark={setDark} />
-        <Hero />
-        <SetupGuide />
-        <Features />
-        <MultilingualSupport />
-        <LoggingSystem />
-        <Troubleshooting />
-        <Footer />
+        <section id="hero"><Hero /></section>
+        <section id="setup"><SetupGuide /></section>
+        <section id="features"><Features /></section>
+        <section id="multilingual"><MultilingualSupport /></section>
+        <section id="logging"><LoggingSystem /></section>
+        <section id="troubleshooting"><Troubleshooting /></section>
+        <section id="footer"><Footer /></section>
       </div>
     </div>
   )

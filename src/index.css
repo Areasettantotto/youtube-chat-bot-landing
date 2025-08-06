@@ -27,10 +27,7 @@
     max-width: 100%;
   }
 
-  /* Migliora lo scroll per sezioni con header fisso */
-  section[id] {
-    scroll-margin-top: 5rem; /* 80px - altezza header + padding */
-  }
+  /* Gestione scroll-margin-top rimossa: ora si usa padding-top nei componenti scrollabili */
 
   /* Miglioramenti responsive globali */
   @media (max-width: 640px) {

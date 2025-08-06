@@ -31,8 +31,7 @@ export default function Hero() {
 
   return (
     <motion.section
-      id="hero"
-      className="w-full min-h-screen flex flex-col justify-center items-center text-center px-3 sm:px-4 lg:px-6 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-colors snap-start snap-always overflow-hidden"
+      className="w-full min-h-screen flex flex-col justify-center items-center text-center px-3 sm:px-4 lg:px-6 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-colors pt-20 sm:pt-24 overflow-hidden"
       variants={sectionVariants}
       initial="hidden"
       whileInView="show"
