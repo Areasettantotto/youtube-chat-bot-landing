@@ -17,29 +17,12 @@ export default function Logo() {
       <div className="relative w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 dark:from-red-400 dark:to-red-500 rounded-lg flex items-center justify-center shadow-lg">
         {/* YouTube Play Icon */}
         <svg
-          className="w-9 h-9 text-white"
-          viewBox="0 0 64 64"
-          fill="none"
+          className="w-6 h-6 text-white"
+          fill="currentColor"
+          viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Sfondo rosso arrotondato */}
-          <rect x="0" y="0" width="64" height="64" rx="16" fill="none"/>
-          {/* Testa robot (più grande) */}
-          <rect x="14" y="18" width="36" height="28" rx="13" fill="#fff" stroke="#222" strokeWidth="2"/>
-          {/* Occhi */}
-          <circle cx="26" cy="32" r="4" fill="#222"/>
-          <circle cx="38" cy="32" r="4" fill="#222"/>
-          {/* Bocca */}
-          <rect x="28" y="42" width="8" height="4" rx="2" fill="#222"/>
-          {/* Antenna */}
-          <rect x="31" y="10" width="2" height="10" rx="1" fill="#222"/>
-          <circle cx="32" cy="10" r="4" fill="#fff" stroke="#222" strokeWidth="2"/>
-          {/* Orecchie */}
-          <circle cx="14" cy="32" r="5" fill="#222"/>
-          <circle cx="50" cy="32" r="5" fill="#222"/>
-          {/* Fumetto con punto interrogativo (più grande) */}
-          <rect x="44" y="8" width="16" height="14" rx="4" fill="#fff" stroke="#222" strokeWidth="2"/>
-          <text x="52" y="18" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#222">?</text>
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
         </svg>
         {/* Chat indicator */}
         <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 dark:bg-green-300 rounded-full border-2 border-white dark:border-gray-800"></div>
@@ -47,10 +30,10 @@ export default function Logo() {
 
       <div className="hidden sm:block">
         <h1 className="text-xl font-bold text-gray-900 dark:text-white leading-tight">
-          Chat Guess
+          YT ChatBot
         </h1>
         <p className="text-xs text-gray-500 dark:text-gray-400 font-medium -mt-0.5">
-          Assistant for YouTube
+          Live Assistant
         </p>
       </div>
     </motion.div>
