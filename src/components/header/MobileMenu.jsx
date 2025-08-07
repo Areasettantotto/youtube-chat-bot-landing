@@ -25,26 +25,34 @@ export default function MobileMenu({ isOpen, setIsOpen }) {
   }, [isOpen])
 
   const handleItemClick = (href) => {
-    const id = href.replace('#', '')
+    // Sblocca immediatamente lo scroll
+    document.body.style.overflow = ''
+    // Chiudi il menu
     setIsOpen(false)
+
+    // Naviga con un piccolo delay
     setTimeout(() => {
+      const id = href.replace('#', '')
+
       if (id === 'policy') {
         window.location.hash = 'policy'
         return
       }
+
       if (id === 'hero') {
         window.scrollTo({ top: 0, behavior: 'smooth' })
         return
       }
+
       const element = document.getElementById(id)
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        const headerOffset = 80
-        window.scrollBy({ top: -headerOffset, behavior: 'smooth' })
+        const headerOffset = 100
+        const elementPosition = element.offsetTop - headerOffset
+        window.scrollTo({ top: elementPosition, behavior: 'smooth' })
       } else {
         console.warn(`Elemento con id "${id}" non trovato`)
       }
-    }, 450)
+    }, 50)
   }
 
   return (
