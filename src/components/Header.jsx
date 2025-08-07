@@ -65,7 +65,10 @@ export default function Header({ dark, setDark }) {
             className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0"
             variants={itemVariants}
           >
-            {/* Selettore lingua - nascosto su mobile molto piccolo */}
+            {/* Selettore lingua: solo bandiera su mobile, completo su desktop */}
+            <div className="block sm:hidden">
+              <LanguageSelector flagOnly />
+            </div>
             <div className="hidden sm:block">
               <LanguageSelector />
             </div>
