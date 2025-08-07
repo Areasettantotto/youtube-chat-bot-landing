@@ -179,7 +179,7 @@ export default function Troubleshooting() {
 
               <div className="mb-6">
                 <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-4">
-                  🛠️ Passaggi per la risoluzione:
+                  {/* 🛠️ Passaggi per la risoluzione: */}
                 </h4>
                 <ol className="space-y-3">
                   {activeItemData?.steps.map((step, idx) => (

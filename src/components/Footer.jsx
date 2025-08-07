@@ -27,7 +27,7 @@ export default function Footer() {
   }
 
   const socialLinks = [
-    { name: 'GitHub', url: 'https://github.com', icon: '🔗' },
+    { name: 'GitHub', url: 'https://github.com/Areasettantotto/youtube-chat-bot.git', icon: '🔗' },
     { name: 'LinkedIn', url: 'https://linkedin.com', icon: '💼' },
     { name: 'YouTube', url: 'https://youtube.com', icon: '📺' }
   ]
