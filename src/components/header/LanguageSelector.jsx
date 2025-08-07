@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { useLanguage } from '../../hooks/useLanguage.jsx'
 
-export default function LanguageSelector() {
+export default function LanguageSelector({ flagOnly = false }) {
   const [isOpen, setIsOpen] = useState(false)
   const [justChanged, setJustChanged] = useState(false)
   const { currentLanguage, changeLanguage, getAvailableLanguages, getCurrentLanguageInfo, t } = useLanguage()
@@ -56,7 +56,9 @@ export default function LanguageSelector() {
         }}
       >
         <span className="text-lg">{selectedLang.flag}</span>
-        <span className="hidden sm:inline text-sm font-medium">{selectedLang.name}</span>
+        {!flagOnly && (
+          <span className="hidden sm:inline text-sm font-medium">{selectedLang.name}</span>
+        )}
 
         {/* 🟢 Indicatore di cambio lingua riuscito */}
         <AnimatePresence>
