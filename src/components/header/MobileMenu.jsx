@@ -24,8 +24,6 @@ export default function MobileMenu({ isOpen, setIsOpen }) {
     }
   }, [isOpen])
 
-
-
   const handleItemClick = (href) => {
     const id = href.replace('#', '')
     setIsOpen(false)

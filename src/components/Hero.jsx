@@ -29,7 +29,7 @@ export default function Hero() {
           {t('hero.subtitle')}
         </motion.p>
         <motion.a
-          href="#features"
+          href="#setup"
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
