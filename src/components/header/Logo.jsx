@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-export default function Logo() {
+export default function Logo({ small = false }) {
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -45,14 +45,16 @@ export default function Logo() {
         <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 dark:bg-green-300 rounded-full border-2 border-white dark:border-gray-800"></div>
       </div>
 
-      <div className="hidden sm:block">
-        <h1 className="text-xl font-bold text-gray-900 dark:text-white leading-tight">
-          Chat Guess
-        </h1>
-        <p className="text-xs text-gray-500 dark:text-gray-400 font-medium -mt-0.5">
-          Assistant for YouTube
-        </p>
-      </div>
+      {!small && (
+        <div>
+          <h1 className="text-xl font-bold text-gray-900 dark:text-white leading-tight">
+            Chat Guess
+          </h1>
+          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium -mt-0.5">
+            Assistant for YouTube
+          </p>
+        </div>
+      )}
     </motion.div>
   )
 }

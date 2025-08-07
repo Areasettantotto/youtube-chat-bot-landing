@@ -48,7 +48,8 @@ export default function Header({ dark, setDark }) {
         <div className="flex items-center justify-between h-16 w-full">
           {/* Logo a sinistra */}
           <motion.div variants={itemVariants} className="flex-shrink-0">
-            <Logo />
+            <span className="hidden sm:inline"><Logo /></span>
+            <span className="inline sm:hidden"><Logo small /></span>
           </motion.div>
 
           {/* Menu desktop al centro - nascosto su mobile */}
