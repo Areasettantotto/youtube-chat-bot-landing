@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import MotionLayout, { motion } from './MotionLayout.jsx'
 
 const features = [
   {
@@ -40,23 +40,6 @@ const features = [
 ]
 
 export default function Features() {
-  // Variants per animazioni avanzate fade-on-scroll
-  const sectionVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20
-    },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-        staggerChildren: 0.08
-      }
-    }
-  }
-
   const containerVariants = {
     hidden: {},
     show: {
@@ -79,13 +62,7 @@ export default function Features() {
   }
 
   return (
-    <motion.section
-      className="w-full min-h-screen flex flex-col justify-center items-center px-3 sm:px-4 lg:px-6 bg-gray-50 dark:bg-gray-900 transition-colors pt-20 sm:pt-24 pb-20 overflow-hidden"
-      variants={sectionVariants}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-    >
+    <MotionLayout className="bg-gray-50 dark:bg-gray-900 pb-20">
       <div className="w-full max-w-7xl mx-auto">
         <motion.h2
           className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white text-center overflow-safe"
@@ -135,6 +112,6 @@ export default function Features() {
           ))}
         </motion.div>
       </div>
-    </motion.section>
+    </MotionLayout>
   )
 }

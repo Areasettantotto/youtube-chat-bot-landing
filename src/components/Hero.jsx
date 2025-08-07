@@ -1,24 +1,8 @@
-import { motion } from 'framer-motion'
+import MotionLayout, { motion } from './MotionLayout.jsx'
 import { useLanguage } from '../hooks/useLanguage.jsx'
 
 export default function Hero() {
   const { t } = useLanguage()
-  // Variants per animazione fade-in on-scroll
-  const sectionVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20
-    },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-        staggerChildren: 0.1
-      }
-    }
-  }
 
   const childVariants = {
     hidden: { opacity: 0, y: 15 },
@@ -30,13 +14,7 @@ export default function Hero() {
   }
 
   return (
-    <motion.section
-      className="w-full min-h-screen flex flex-col justify-center items-center text-center px-3 sm:px-4 lg:px-6 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-colors pt-20 sm:pt-24 overflow-hidden"
-      variants={sectionVariants}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-    >
+    <MotionLayout className="text-center bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
       <div className="w-full max-w-6xl mx-auto pt-20 pb-8">
         <motion.h1
           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white overflow-safe leading-tight"
@@ -62,6 +40,6 @@ export default function Hero() {
           {t('hero.cta')}
         </motion.a>
       </div>
-    </motion.section>
+    </MotionLayout>
   )
 }

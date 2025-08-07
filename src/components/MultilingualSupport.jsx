@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import MotionLayout, { motion } from './MotionLayout.jsx'
 
 const languages = [
   {
@@ -34,18 +34,6 @@ const languages = [
 ]
 
 export default function MultilingualSupport() {
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.1
-      }
-    }
-  }
-
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
     show: {
@@ -56,14 +44,8 @@ export default function MultilingualSupport() {
   }
 
   return (
-    <motion.section
-      className="w-full min-h-screen flex flex-col justify-center items-center px-3 sm:px-4 lg:px-6 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 transition-colors pt-20 sm:pt-24 pb-20 overflow-hidden"
-      variants={sectionVariants}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-    >
-      <div className="w-full max-w-7xl mx-auto text-center">
+    <MotionLayout className="text-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 pb-20">
+      <div className="w-full max-w-7xl mx-auto">
         <motion.div className="mb-8 sm:mb-12" variants={itemVariants}>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white overflow-safe">
             🌍 Supporto Multilingua
@@ -120,6 +102,6 @@ MESSAGES_FILE=messages/messages-arabo.json     # 🇸🇦 Arabic`}</code>
           </div>
         </motion.div>
       </div>
-    </motion.section>
+    </MotionLayout>
   )
 }

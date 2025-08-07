@@ -1,22 +1,6 @@
-import { motion } from 'framer-motion'
+import MotionLayout, { motion } from './MotionLayout.jsx'
 
 export default function Footer() {
-  const sectionVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20
-    },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-        staggerChildren: 0.1
-      }
-    }
-  }
-
   const childVariants = {
     hidden: { opacity: 0, y: 15 },
     show: {
@@ -33,13 +17,7 @@ export default function Footer() {
   ]
 
   return (
-    <motion.footer
-      className="w-full min-h-screen flex flex-col justify-center items-center text-center px-3 sm:px-4 lg:px-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors pt-20 sm:pt-24 overflow-hidden"
-      variants={sectionVariants}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-    >
+    <MotionLayout className="text-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <div className="w-full max-w-4xl mx-auto">
         <motion.div
           className="mb-8"
@@ -112,6 +90,6 @@ export default function Footer() {
           </div>
         </motion.div>
       </div>
-    </motion.footer>
+    </MotionLayout>
   )
 }
