@@ -48,8 +48,8 @@ export default function SetupGuide() {
 	const [activeStep, setActiveStep] = useState(1)
 
 	return (
-		<MotionLayout className="bg-white dark:bg-gray-900">
-			<div className="w-full max-w-6xl mx-auto">
+		<MotionLayout id="setup" className="bg-gray-50 dark:bg-gray-900 pb-20">
+			<div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 				<motion.div className="text-center mb-8 sm:mb-12" variants={childVariants}>
 					<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white overflow-safe">
 						🚀 Guida Setup Completa

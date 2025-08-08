@@ -25,34 +25,42 @@ export default function MobileMenu({ isOpen, setIsOpen }) {
   }, [isOpen])
 
   const handleItemClick = (href) => {
-    // Sblocca immediatamente lo scroll
     document.body.style.overflow = ''
-    // Chiudi il menu
     setIsOpen(false)
 
-    // Naviga con un piccolo delay
+    // Aspetta che il menu sia chiuso, poi forza un reflow del DOM prima di navigare
     setTimeout(() => {
-      const id = href.replace('#', '')
+      // Forza un reflow del DOM
+      document.body.offsetHeight
+      // Usa il comportamento nativo più diretto
+      document.location.hash = href
+    }, 450)
+  }
 
-      if (id === 'policy') {
-        window.location.hash = 'policy'
-        return
-      }
-
-      if (id === 'hero') {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-        return
-      }
-
-      const element = document.getElementById(id)
-      if (element) {
-        const headerOffset = 100
-        const elementPosition = element.offsetTop - headerOffset
-        window.scrollTo({ top: elementPosition, behavior: 'smooth' })
-      } else {
-        console.warn(`Elemento con id "${id}" non trovato`)
-      }
-    }, 50)
+  // Callback chiamato da AnimatePresence quando il menu è rimosso dal DOM
+  const handleMenuExitComplete = () => {
+    const href = pendingScrollRef.current
+    if (!href) return
+    const id = href.replace('#', '')
+    if (id === 'policy') {
+      window.location.hash = 'policy'
+      pendingScrollRef.current = null
+      return
+    }
+    if (id === 'hero') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      pendingScrollRef.current = null
+      return
+    }
+    const element = document.getElementById(id)
+    if (element) {
+      const headerOffset = 64
+      const elementPosition = element.offsetTop - headerOffset
+      window.scrollTo({ top: elementPosition, behavior: 'smooth' })
+    } else {
+      console.warn(`Elemento con id "${id}" non trovato`)
+    }
+    pendingScrollRef.current = null
   }
 
   return (

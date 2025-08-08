@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-export default function MotionLayout({ children, className = "" }) {
+export default function MotionLayout({ children, className = "", id }) {
   const sectionVariants = {
     hidden: {
       opacity: 0,
@@ -28,6 +28,7 @@ export default function MotionLayout({ children, className = "" }) {
 
   return (
     <motion.section
+      id={id}
       className={`w-full min-h-screen flex flex-col justify-center items-center px-3 sm:px-4 lg:px-6 transition-colors pt-20 sm:pt-24 overflow-hidden ${className}`}
       variants={sectionVariants}
       initial="hidden"
