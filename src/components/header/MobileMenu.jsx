@@ -28,12 +28,24 @@ export default function MobileMenu({ isOpen, setIsOpen }) {
     document.body.style.overflow = ''
     setIsOpen(false)
 
-    // Aspetta che il menu sia chiuso, poi forza un reflow del DOM prima di navigare
+    // Dopo la chiusura del menu, attendi che l'elemento sia nel DOM prima di scrollare
     setTimeout(() => {
-      // Forza un reflow del DOM
-      document.body.offsetHeight
-      // Usa il comportamento nativo più diretto
-      document.location.hash = href
+      const id = href.replace('#', '')
+      let attempts = 0
+      const maxAttempts = 10 // 10 tentativi (500ms max)
+      function scrollToSection() {
+        const el = document.getElementById(id)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' })
+        } else if (attempts < maxAttempts) {
+          attempts++
+          setTimeout(scrollToSection, 50)
+        } else {
+          // fallback: cambia hash comunque
+          document.location.hash = href
+        }
+      }
+      scrollToSection()
     }, 450)
   }
 
