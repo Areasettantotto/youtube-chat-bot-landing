@@ -1,4 +1,4 @@
-import MotionLayout, { motion } from './MotionLayout.jsx'
+import MotionLayout, { motion, childVariants } from './MotionLayout.jsx'
 
 const languages = [
   {
@@ -34,19 +34,10 @@ const languages = [
 ]
 
 export default function MultilingualSupport() {
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 }
-    }
-  }
-
   return (
     <MotionLayout className="text-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 pb-20">
       <div className="w-full max-w-7xl mx-auto">
-        <motion.div className="mb-8 sm:mb-12" variants={itemVariants}>
+        <motion.div className="mb-8 sm:mb-12" variants={childVariants}>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white overflow-safe">
             🌍 Supporto Multilingua
           </h2>
@@ -57,7 +48,7 @@ export default function MultilingualSupport() {
 
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-6 mb-8 sm:mb-12"
-          variants={itemVariants}
+          variants={childVariants}
         >
           {languages.map((lang, idx) => (
             <motion.div
@@ -85,7 +76,7 @@ export default function MultilingualSupport() {
 
         <motion.div
           className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg overflow-hidden"
-          variants={itemVariants}
+          variants={childVariants}
         >
           <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
             📝 Configurazione Lingua

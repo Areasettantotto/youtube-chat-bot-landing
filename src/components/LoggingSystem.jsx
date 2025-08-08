@@ -1,4 +1,4 @@
-import MotionLayout, { motion } from './MotionLayout.jsx'
+import MotionLayout, { motion, childVariants } from './MotionLayout.jsx'
 import { useState } from 'react'
 
 const logTypes = [
@@ -75,19 +75,10 @@ MEDIUM_TRAFFIC_THRESHOLD=2   # Soglia traffico medio`
 export default function LoggingSystem() {
   const [activeConfig, setActiveConfig] = useState(0)
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 }
-    }
-  }
-
   return (
     <MotionLayout className="bg-gray-50 dark:bg-gray-900 pb-20">
       <div className="w-full max-w-7xl mx-auto">
-        <motion.div className="text-center mb-8 sm:mb-12" variants={itemVariants}>
+        <motion.div className="text-center mb-8 sm:mb-12" variants={childVariants}>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white overflow-safe">
             📊 Sistema di Logging Avanzato
           </h2>
@@ -97,7 +88,7 @@ export default function LoggingSystem() {
         </motion.div>
 
         {/* Log Types */}
-        <motion.div className="mb-8 sm:mb-12" variants={itemVariants}>
+        <motion.div className="mb-8 sm:mb-12" variants={childVariants}>
           <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 text-center">
             📁 Tipi di Log Generati
           </h3>
@@ -131,7 +122,7 @@ export default function LoggingSystem() {
         </motion.div>
 
         {/* Configuration Examples */}
-        <motion.div className="mb-8 sm:mb-12" variants={itemVariants}>
+        <motion.div className="mb-8 sm:mb-12" variants={childVariants}>
           <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 text-center">
             ⚙️ Esempi di Configurazione
           </h3>
@@ -173,7 +164,7 @@ export default function LoggingSystem() {
         {/* Live Output Example */}
         <motion.div
           className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg overflow-hidden"
-          variants={itemVariants}
+          variants={childVariants}
         >
           <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 text-center">
             🖥️ Output Console in Tempo Reale

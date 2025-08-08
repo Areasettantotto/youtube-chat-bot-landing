@@ -1,15 +1,6 @@
-import MotionLayout, { motion } from './MotionLayout.jsx'
+import MotionLayout, { motion, childVariants } from './MotionLayout.jsx'
 
 export default function Footer() {
-  const childVariants = {
-    hidden: { opacity: 0, y: 15 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
-  }
-
   const socialLinks = [
     { name: 'GitHub', url: 'https://github.com/Areasettantotto/youtube-chat-bot.git', icon: '🔗' },
     { name: 'LinkedIn', url: 'https://linkedin.com', icon: '💼' },

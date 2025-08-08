@@ -40,3 +40,12 @@ export default function MotionLayout({ children, className = "" }) {
 }
 
 export { motion }
+
+export const childVariants = {
+  hidden: { opacity: 0, y: 15 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+}

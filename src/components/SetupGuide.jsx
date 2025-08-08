@@ -1,4 +1,4 @@
-import MotionLayout, { motion } from './MotionLayout.jsx'
+import MotionLayout, { motion, childVariants } from './MotionLayout.jsx'
 import { useState } from 'react'
 
 const setupSteps = [
@@ -47,19 +47,10 @@ nano .env`,
 export default function SetupGuide() {
 	const [activeStep, setActiveStep] = useState(1)
 
-	const itemVariants = {
-		hidden: { opacity: 0, y: 30 },
-		show: {
-			opacity: 1,
-			y: 0,
-			transition: { duration: 0.6 },
-		},
-	}
-
 	return (
 		<MotionLayout className="bg-white dark:bg-gray-900">
 			<div className="w-full max-w-6xl mx-auto">
-				<motion.div className="text-center mb-8 sm:mb-12" variants={itemVariants}>
+				<motion.div className="text-center mb-8 sm:mb-12" variants={childVariants}>
 					<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white overflow-safe">
 						🚀 Guida Setup Completa
 					</h2>
@@ -71,7 +62,7 @@ export default function SetupGuide() {
 
 				<motion.div
 					className="grid md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
-					variants={itemVariants}
+					variants={childVariants}
 				>
 					{/* Step Navigator */}
 					<div className="space-y-3 sm:space-y-4">

@@ -1,4 +1,4 @@
-import MotionLayout, { motion } from './MotionLayout.jsx'
+import MotionLayout, { motion, childVariants } from './MotionLayout.jsx'
 
 const features = [
   {
@@ -49,30 +49,18 @@ export default function Features() {
     },
   }
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 15 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }
-  }
-
   return (
     <MotionLayout className="bg-gray-50 dark:bg-gray-900 pb-20">
       <div className="w-full max-w-7xl mx-auto">
         <motion.h2
           className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white text-center overflow-safe"
-          variants={itemVariants}
+          variants={childVariants}
         >
           🔧 Funzionalità Avanzate
         </motion.h2>
         <motion.p
           className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8 sm:mb-12 px-2 text-center overflow-safe"
-          variants={itemVariants}
+          variants={childVariants}
         >
           Il bot più completo per contest interattivi su YouTube Live
         </motion.p>
@@ -85,7 +73,7 @@ export default function Features() {
             <motion.div
               key={idx}
               className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors cursor-pointer group overflow-hidden"
-              variants={itemVariants}
+              variants={childVariants}
               whileHover={{ scale: 1.02, y: -2 }}
               transition={{ type: 'spring', stiffness: 400, damping: 25 }}
             >

@@ -1,4 +1,4 @@
-import MotionLayout, { motion } from './MotionLayout.jsx'
+import MotionLayout, { motion, childVariants } from './MotionLayout.jsx'
 import { useState } from 'react'
 
 const troubleshootingItems = [
@@ -87,21 +87,12 @@ VERBOSE_LOGGING=true`
 export default function Troubleshooting() {
   const [activeItem, setActiveItem] = useState(1)
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 }
-    }
-  }
-
   const activeItemData = troubleshootingItems.find(item => item.id === activeItem)
 
   return (
     <MotionLayout className="bg-gradient-to-br from-red-50 to-orange-100 dark:from-gray-800 dark:to-gray-900 pb-20">
       <div className="w-full max-w-7xl mx-auto">
-        <motion.div className="text-center mb-8 sm:mb-12" variants={itemVariants}>
+        <motion.div className="text-center mb-8 sm:mb-12" variants={childVariants}>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white overflow-safe">
             🔍 Troubleshooting e FAQ
           </h2>
@@ -110,7 +101,7 @@ export default function Troubleshooting() {
           </p>
         </motion.div>
 
-        <motion.div className="grid lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8" variants={itemVariants}>
+        <motion.div className="grid lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8" variants={childVariants}>
           {/* Problem List */}
           <div className="lg:col-span-1">
             <div className="space-y-2 sm:space-y-3">
@@ -194,7 +185,7 @@ export default function Troubleshooting() {
         {/* Debug Section */}
         <motion.div
           className="mt-8 sm:mt-12 bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg overflow-hidden"
-          variants={itemVariants}
+          variants={childVariants}
         >
           <div className="text-center mb-6 sm:mb-8">
             <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-4">
