@@ -1,4 +1,5 @@
-import MotionLayout, { motion, childVariants } from './MotionLayout.jsx'
+import MotionLayout, { motion } from './MotionLayout.jsx'
+import { childVariants, containerVariants } from '../animations/variants'
 
 const features = [
   {
@@ -40,14 +41,6 @@ const features = [
 ]
 
 export default function Features() {
-  const containerVariants = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  }
 
   return (
     <MotionLayout className="bg-gray-50 dark:bg-gray-900 pb-20">

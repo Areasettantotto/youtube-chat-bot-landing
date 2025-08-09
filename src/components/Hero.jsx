@@ -19,15 +19,16 @@ export default function Hero() {
         >
           {t('hero.subtitle')}
         </motion.p>
-        <motion.a
+          <motion.a
           href="#setup"
           variants={childVariants}
-          whileHover={{ scale: 1.02 }}
+          whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 25 }}
           className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full shadow-lg transition-all duration-300 text-sm sm:text-base lg:text-lg font-semibold max-w-xs sm:max-w-sm mx-auto"
         >
-          {t('hero.cta')}
-        </motion.a>
+        {t('hero.cta')}
+      </motion.a>
       </div>
     </MotionLayout>
   )

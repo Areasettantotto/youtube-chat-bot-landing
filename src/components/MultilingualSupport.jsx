@@ -1,4 +1,5 @@
-import MotionLayout, { motion, childVariants } from './MotionLayout.jsx'
+import MotionLayout, { motion } from './MotionLayout.jsx'
+import { childVariants, containerVariants } from '../animations/variants'
 
 const languages = [
   {
@@ -48,12 +49,13 @@ export default function MultilingualSupport() {
 
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-6 mb-8 sm:mb-12"
-          variants={childVariants}
+          variants={containerVariants}
         >
           {languages.map((lang, idx) => (
             <motion.div
               key={lang.code}
               className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-5 lg:p-6 shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden"
+              variants={childVariants}
               whileHover={{ scale: 1.05, y: -5 }}
               transition={{ type: 'spring', stiffness: 400, damping: 25 }}
             >

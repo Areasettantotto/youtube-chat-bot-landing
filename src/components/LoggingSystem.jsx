@@ -1,4 +1,5 @@
-import MotionLayout, { motion, childVariants } from './MotionLayout.jsx'
+import MotionLayout, { motion } from './MotionLayout.jsx'
+import { childVariants, containerVariants } from '../animations/variants'
 import { useState } from 'react'
 
 const logTypes = [
@@ -92,11 +93,15 @@ export default function LoggingSystem() {
           <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 text-center">
             📁 Tipi di Log Generati
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6"
+            variants={containerVariants}
+          >
             {logTypes.map((log, idx) => (
               <motion.div
                 key={idx}
                 className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden"
+                variants={childVariants}
                 whileHover={{ scale: 1.02, y: -2 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
@@ -118,7 +123,7 @@ export default function LoggingSystem() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Configuration Examples */}
