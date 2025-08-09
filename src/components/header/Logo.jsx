@@ -1,6 +1,23 @@
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 export default function Logo({ small = false }) {
+  const [altTextIdx, setAltTextIdx] = useState(0)
+  const altTexts = [
+    'YouTube',
+    '60.56',
+    'Live Assistant',
+    '105.49',
+    'You win!!'
+  ]
+
+  useEffect(() => {
+    if (small) return
+    const interval = setInterval(() => {
+      setAltTextIdx(idx => (idx + 1) % altTexts.length)
+    }, 1500)
+    return () => clearInterval(interval)
+  }, [small])
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -50,9 +67,16 @@ export default function Logo({ small = false }) {
           <h1 className="text-xl font-bold text-gray-900 dark:text-white leading-tight">
             Chat Guess
           </h1>
-          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium -mt-0.5">
-            Assistant for YouTube
-          </p>
+          <motion.p
+            className="text-xs text-gray-500 dark:text-gray-400 font-medium -mt-0.5 min-h-[1.2em]"
+            key={altTextIdx}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.4 }}
+          >
+            {altTexts[altTextIdx]}
+          </motion.p>
         </div>
       )}
     </motion.div>

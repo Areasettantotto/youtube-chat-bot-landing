@@ -74,7 +74,7 @@ export default function Footer() {
           </div>
 
           <div className="text-sm sm:text-base text-gray-500 dark:text-gray-400 space-y-2 overflow-safe">
-            <p>© 2025 Marco Busato. Tutti i diritti riservati.</p>
+            <p>© 2025 Marco Busato - Areasettantotto. Tutti i diritti riservati.</p>
             <p className="text-xs text-gray-400 dark:text-gray-500">
               Realizzato con ❤️ usando React, Tailwind CSS e Framer Motion
             </p>
