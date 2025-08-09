@@ -7,12 +7,12 @@ function Router() {
   const [currentPage, setCurrentPage] = useState('home')
 
   useEffect(() => {
-    // Semplice routing basato sull'hash URL
+    // Simple routing based on the URL hash
     const handleHashChange = () => {
       const hash = window.location.hash.substring(1)
 
-      // Solo la policy page ha il suo componente dedicato
-      // Tutti gli altri hash (#setup, #features, etc.) restano nella home
+      // Only the policy page has its own dedicated component
+      // All other hashes (#setup, #features, etc.) remain on the home page
       if (hash === 'policy') {
         setCurrentPage('policy')
       } else {

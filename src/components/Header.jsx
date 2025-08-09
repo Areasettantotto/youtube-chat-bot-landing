@@ -32,7 +32,7 @@ export default function Header({ dark, setDark }) {
     visible: { y: 0, opacity: 1 }
   }
 
-  // Usa navItems centralizzato
+  // Use centralized navItems
   const navItems = getNavItems(t, 'desktop')
   const sectionIds = navItems.map(item => item.href.replace('#', ''))
   const activeSection = useActiveSection(sectionIds, 100)
@@ -46,13 +46,13 @@ export default function Header({ dark, setDark }) {
     >
       <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-16 w-full">
-          {/* Logo a sinistra */}
+          {/* Logo on the left */}
           <motion.div variants={itemVariants} className="flex-shrink-0">
             <span className="hidden sm:inline"><Logo /></span>
             <span className="inline sm:hidden"><Logo small /></span>
           </motion.div>
 
-          {/* Menu desktop al centro - nascosto su mobile */}
+          {/* Desktop menu in the center - hidden on mobile */}
           <motion.nav
             className="hidden lg:flex items-center space-x-6 xl:space-x-8 flex-1 justify-center"
             variants={itemVariants}
@@ -60,12 +60,12 @@ export default function Header({ dark, setDark }) {
             <NavLinks items={navItems} activeSection={activeSection} />
           </motion.nav>
 
-          {/* Controlli a destra */}
+          {/* Controls on the right */}
           <motion.div
             className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0"
             variants={itemVariants}
           >
-            {/* Selettore lingua: solo bandiera su mobile, completo su desktop */}
+            {/* Language selector: only flag on mobile, full on desktop */}
             <div className="block sm:hidden">
               <LanguageSelector flagOnly />
             </div>
@@ -73,10 +73,10 @@ export default function Header({ dark, setDark }) {
               <LanguageSelector />
             </div>
 
-            {/* Toggle tema */}
+            {/* Theme toggle */}
             <ThemeToggle dark={dark} setDark={setDark} />
 
-            {/* Menu mobile */}
+            {/* Mobile menu */}
             <MobileMenu
               isOpen={isMobileMenuOpen}
               setIsOpen={setIsMobileMenuOpen}

@@ -86,7 +86,7 @@ const policySection = {
 }
 
 export default function PolicyPage() {
-  // Scroll automatico in alto all'apertura della pagina
+  // Automatically scroll to top when the page loads
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' })
   }, [])

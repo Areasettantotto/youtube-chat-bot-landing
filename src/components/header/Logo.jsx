@@ -22,22 +22,22 @@ export default function Logo({ small = false }) {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Sfondo rosso arrotondato */}
+          {/* Rounded red background */}
           <rect x="0" y="0" width="64" height="64" rx="16" fill="none"/>
-          {/* Testa robot (più grande) */}
+          {/* Robot head (larger) */}
           <rect x="14" y="18" width="36" height="28" rx="13" fill="#fff" stroke="#222" strokeWidth="2"/>
-          {/* Occhi */}
+          {/* Eyes */}
           <circle cx="26" cy="32" r="4" fill="#222"/>
           <circle cx="38" cy="32" r="4" fill="#222"/>
-          {/* Bocca */}
+          {/* Mouth */}
           <rect x="28" y="42" width="8" height="4" rx="2" fill="#222"/>
           {/* Antenna */}
           <rect x="31" y="10" width="2" height="10" rx="1" fill="#222"/>
           <circle cx="32" cy="10" r="4" fill="#fff" stroke="#222" strokeWidth="2"/>
-          {/* Orecchie */}
+          {/* Ears */}
           <circle cx="14" cy="32" r="5" fill="#222"/>
           <circle cx="50" cy="32" r="5" fill="#222"/>
-          {/* Fumetto con punto interrogativo (più grande) */}
+          {/* Speech bubble with question mark (larger) */}
           <rect x="44" y="8" width="16" height="14" rx="4" fill="#fff" stroke="#222" strokeWidth="2"/>
           <text x="52" y="18" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#222">?</text>
         </svg>

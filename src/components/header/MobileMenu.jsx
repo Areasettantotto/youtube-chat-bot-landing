@@ -28,11 +28,11 @@ export default function MobileMenu({ isOpen, setIsOpen }) {
     document.body.style.overflow = ''
     setIsOpen(false)
 
-    // Dopo la chiusura del menu, attendi che l'elemento sia nel DOM prima di scrollare
+    // After closing the menu, wait for the element to be in the DOM before scrolling
     setTimeout(() => {
       const id = href.replace('#', '')
       let attempts = 0
-      const maxAttempts = 10 // 10 tentativi (500ms max)
+      const maxAttempts = 10 // 10 attempts (500ms max)
       function scrollToSection() {
         const el = document.getElementById(id)
         if (el) {
@@ -41,7 +41,7 @@ export default function MobileMenu({ isOpen, setIsOpen }) {
           attempts++
           setTimeout(scrollToSection, 50)
         } else {
-          // fallback: cambia hash comunque
+          // fallback: change hash anyway
           document.location.hash = href
         }
       }
@@ -49,7 +49,7 @@ export default function MobileMenu({ isOpen, setIsOpen }) {
     }, 450)
   }
 
-  // Callback chiamato da AnimatePresence quando il menu è rimosso dal DOM
+  // Callback called by AnimatePresence when the menu is removed from the DOM
   const handleMenuExitComplete = () => {
     const href = pendingScrollRef.current
     if (!href) return

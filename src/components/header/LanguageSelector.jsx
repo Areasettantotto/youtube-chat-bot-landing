@@ -10,7 +10,7 @@ export default function LanguageSelector({ flagOnly = false }) {
   const languages = getAvailableLanguages()
   const selectedLang = getCurrentLanguageInfo()
 
-  // 🎯 Effetto per mostrare feedback quando cambia la lingua
+  // 🎯 Effect to show feedback when the language changes
   useEffect(() => {
     setJustChanged(true)
     const timer = setTimeout(() => setJustChanged(false), 1000)
@@ -36,7 +36,7 @@ export default function LanguageSelector({ flagOnly = false }) {
     changeLanguage(langCode)
     setIsOpen(false)
 
-    // 🎉 Feedback visivo per il cambio lingua
+    // 🎉 Visual feedback for language change
     setJustChanged(true)
   }
 
@@ -60,7 +60,7 @@ export default function LanguageSelector({ flagOnly = false }) {
           <span className="hidden sm:inline text-sm font-medium">{selectedLang.name}</span>
         )}
 
-        {/* 🟢 Indicatore di cambio lingua riuscito */}
+        {/* 🟢 Successful language change indicator */}
         <AnimatePresence>
           {justChanged && (
             <motion.span
@@ -90,7 +90,7 @@ export default function LanguageSelector({ flagOnly = false }) {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Overlay per chiudere il dropdown */}
+            {/* Overlay to close the dropdown */}
             <div
               className="fixed inset-0 z-40"
               onClick={() => setIsOpen(false)}

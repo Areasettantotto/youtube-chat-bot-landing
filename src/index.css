@@ -20,30 +20,30 @@
     box-sizing: border-box;
   }
 
-  /* Previeni overflow orizzontale globale */
+  /* Prevent global horizontal overflow */
   *,
   *::before,
   *::after {
     max-width: 100%;
   }
 
-  /* Gestione scroll-margin-top rimossa: ora si usa padding-top nei componenti scrollabili */
+  /* Scroll-margin-top management removed: now using padding-top in scrollable components */
 
-  /* Miglioramenti responsive globali */
+  /* Global responsive improvements */
   @media (max-width: 640px) {
     body {
       font-size: 14px;
     }
   }
 
-  /* Gestione overflow text per small devices */
+  /* Text overflow management for small devices */
   .text-responsive {
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
   }
 
-  /* Assicura che il contenuto non fuoriesca mai */
+  /* Ensure that content never overflows */
   .overflow-safe {
     overflow-wrap: break-word;
     word-break: break-word;
@@ -55,7 +55,7 @@
     box-shadow: none !important;
   }
 
-  /* Container responsive safe */
+  /* Responsive safe container */
   .container-safe {
     width: 100%;
     max-width: 100vw;

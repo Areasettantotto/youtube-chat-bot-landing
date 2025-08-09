@@ -153,13 +153,13 @@ const languages = {
   }
 }
 
-// 🌍 Context per gestire la lingua globalmente
+// 🌍 Context to manage language globally
 const LanguageContext = createContext()
 
-// 🎯 Provider che wrappa l'intera app
+// 🎯 Provider that wraps the entire app
 export const LanguageProvider = ({ children }) => {
   const [currentLanguage, setCurrentLanguage] = useState(() => {
-    // Prova a recuperare la lingua dal localStorage
+    // Try to retrieve the language from localStorage
     if (typeof window !== 'undefined') {
       return localStorage.getItem('language') || 'it'
     }
@@ -167,7 +167,7 @@ export const LanguageProvider = ({ children }) => {
   })
 
   useEffect(() => {
-    // Salva la lingua nel localStorage quando cambia
+    // Save the language to localStorage when it changes
     if (typeof window !== 'undefined') {
       localStorage.setItem('language', currentLanguage)
     }
@@ -211,7 +211,7 @@ export const LanguageProvider = ({ children }) => {
   )
 }
 
-// 🪝 Hook personalizzato che usa il context
+// 🪝 Custom hook that uses the context
 export const useLanguage = () => {
   const context = useContext(LanguageContext)
 

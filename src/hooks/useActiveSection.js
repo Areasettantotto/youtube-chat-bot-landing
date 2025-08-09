@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 
 /**
- * useActiveSection - React hook per tracciare la sezione attiva durante lo scroll.
- * @param {string[]} sectionIds - Array di id delle sezioni da tracciare
- * @param {number} offset - Offset in pixel da sottrarre (es. altezza header)
- * @returns {string|null} - id della sezione attiva
+ * useActiveSection - React hook to track the active section during scroll.
+ * @param {string[]} sectionIds - Array of section ids to track
+ * @param {number} offset - Offset in pixels to subtract (e.g. header height)
+ * @returns {string|null} - id of the active section
  */
 export function useActiveSection(sectionIds, offset = 100) {
   const [activeSection, setActiveSection] = useState(sectionIds[0] || null)
