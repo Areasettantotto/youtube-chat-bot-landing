@@ -1,5 +1,6 @@
 import MotionLayout, { motion } from './MotionLayout.jsx'
 import { childVariants, containerVariants } from '../animations/variants'
+import { useLanguage } from '../hooks/useLanguage.jsx'
 
 const languages = [
   {
@@ -35,15 +36,16 @@ const languages = [
 ]
 
 export default function MultilingualSupport() {
+  const { t } = useLanguage()
   return (
     <MotionLayout className="text-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 pb-20">
       <div className="w-full max-w-7xl mx-auto">
         <motion.div className="mb-8 sm:mb-12" variants={childVariants}>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white overflow-safe">
-            🌍 Supporto Multilingua
+            {t('multilingual.title')}
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-2 overflow-safe">
-            Il bot supporta 5 lingue diverse con messaggi personalizzati per ogni regione
+            {t('multilingual.subtitle')}
           </p>
         </motion.div>
 
@@ -81,12 +83,12 @@ export default function MultilingualSupport() {
           variants={childVariants}
         >
           <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
-            📝 Configurazione Lingua
+            {t('multilingual.configTitle')}
           </h3>
           <div className="bg-gray-900 rounded-lg p-3 sm:p-4 text-left overflow-x-auto">
             <pre className="text-green-400 text-xs sm:text-sm overflow-safe">
-              <code>{`# Seleziona la lingua nel file .env
-MESSAGES_FILE=messages/messages-italian.json   # 🇮🇹 Italiano
+              <code>{`# Select the language in the .env file
+MESSAGES_FILE=messages/messages-italian.json   # 🇮🇹 Italian
 MESSAGES_FILE=messages/messages.json           # 🇬🇧 English
 MESSAGES_FILE=messages/messages-russian.json   # 🇷🇺 Russian
 MESSAGES_FILE=messages/messages-cinese.json    # 🇨🇳 Chinese

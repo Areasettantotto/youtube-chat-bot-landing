@@ -1,9 +1,11 @@
 import MotionLayout, { motion } from './MotionLayout.jsx'
 import { childVariants, containerVariants } from '../animations/variants'
 import { useState } from 'react'
+import { useLanguage } from '../hooks/useLanguage.jsx'
 
 const logTypes = [
   {
+    key: 'participants',
     name: 'participants.log',
     icon: '👥',
     description: 'Nuovi partecipanti unici',
@@ -11,6 +13,7 @@ const logTypes = [
     color: 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
   },
   {
+    key: 'valid_attempts',
     name: 'valid_attempts.log',
     icon: '✅',
     description: 'Tentativi validi e vincitori',
@@ -18,6 +21,7 @@ const logTypes = [
     color: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200'
   },
   {
+    key: 'discarded_attempts',
     name: 'discarded_attempts.log',
     icon: '❌',
     description: 'Tentativi non validi',
@@ -25,6 +29,7 @@ const logTypes = [
     color: 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
   },
   {
+    key: 'exhausted_attempts',
     name: 'exhausted_attempts.log',
     icon: '🚫',
     description: 'Utenti che hanno esaurito i tentativi',
@@ -32,6 +37,7 @@ const logTypes = [
     color: 'bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200'
   },
   {
+    key: 'startup_errors',
     name: 'startup_errors.json',
     icon: '⚠️',
     description: 'Errori di avvio del bot',
@@ -42,7 +48,8 @@ const logTypes = [
 
 const configExamples = [
   {
-    title: 'Configurazione Base',
+    key: 'base',
+    title: 'Base Configuration',
     code: `# Contest configuration
 CORRECT_PRICE=60.56
 MAX_ATTEMPTS=3
@@ -54,8 +61,9 @@ ENABLE_LOGS=true
 LOGS_DIR=logs`
   },
   {
-    title: 'Soglie Sconto Personalizzate',
-    code: `# Illimitate configurazioni temporali con sconti diversi
+    key: 'thresholds',
+    title: 'Custom Discount Thresholds',
+    code: `# Unlimited time configurations with different discounts
 EXTRADISCOUNT_THRESHOLDS=[
   {"min":0,"max":5,"discount":80},
   {"min":6,"max":15,"discount":70},
@@ -63,35 +71,37 @@ EXTRADISCOUNT_THRESHOLDS=[
 ]`
   },
   {
-    title: 'Polling API Avanzato',
-    code: `# Polling dinamico basato sul traffico
-MIN_POLLING=5000             # Traffico alto
-MID_POLLING=10000            # Traffico medio
-MAX_POLLING=30000            # Traffico basso
-HIGH_TRAFFIC_THRESHOLD=10    # Soglia traffico alto
-MEDIUM_TRAFFIC_THRESHOLD=2   # Soglia traffico medio`
+    key: 'polling',
+    title: 'Advanced API Polling',
+    code: `# Dynamic polling based on traffic
+MIN_POLLING=5000             # High traffic
+MID_POLLING=10000            # Medium traffic
+MAX_POLLING=30000            # Low traffic
+HIGH_TRAFFIC_THRESHOLD=10    # High traffic threshold
+MEDIUM_TRAFFIC_THRESHOLD=2   # Medium traffic threshold`
   }
 ]
 
 export default function LoggingSystem() {
   const [activeConfig, setActiveConfig] = useState(0)
+  const { t } = useLanguage()
 
   return (
     <MotionLayout className="bg-gray-50 dark:bg-gray-900 pb-20">
       <div className="w-full max-w-7xl mx-auto">
         <motion.div className="text-center mb-8 sm:mb-12" variants={childVariants}>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white overflow-safe">
-            📊 Sistema di Logging Avanzato
+            {t('logging.title')}
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-2 overflow-safe">
-            Monitoraggio completo delle attività del bot con log dettagliati e configurazione flessibile
+            {t('logging.subtitle')}
           </p>
         </motion.div>
 
         {/* Log Types */}
         <motion.div className="mb-8 sm:mb-12" variants={childVariants}>
           <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 text-center">
-            📁 Tipi di Log Generati
+            {t('logging.typesTitle')}
           </h3>
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6"
@@ -109,10 +119,10 @@ export default function LoggingSystem() {
                   <div className="text-xl sm:text-2xl lg:text-3xl flex-shrink-0">{log.icon}</div>
                   <div className="flex-1 min-w-0">
                     <h4 className="text-sm sm:text-base lg:text-lg font-bold text-gray-900 dark:text-white mb-2 overflow-safe">
-                      {log.name}
+                      {t(`logging.types.${log.key}.name`) || log.name}
                     </h4>
                     <p className="text-xs sm:text-sm lg:text-base text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 overflow-safe">
-                      {log.description}
+                      {t(`logging.types.${log.key}.description`) || log.description}
                     </p>
                     <div className={`p-2 sm:p-3 lg:p-4 rounded-lg ${log.color}`}>
                       <code className="text-xs sm:text-sm font-mono break-all block overflow-hidden overflow-safe">
@@ -129,13 +139,17 @@ export default function LoggingSystem() {
         {/* Configuration Examples */}
         <motion.div className="mb-8 sm:mb-12" variants={childVariants}>
           <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 text-center">
-            ⚙️ Esempi di Configurazione
+            {t('logging.configTitle')}
           </h3>
 
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
             {/* Tab Navigation */}
             <div className="flex flex-col sm:flex-row border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
-              {configExamples.map((config, idx) => (
+        {configExamples.map((config, idx) => {
+                const cfgKey = `logging.configExamples.${config.key}.title`
+                const cfgLabel = t(cfgKey)
+                const label = cfgLabel === cfgKey ? config.title : cfgLabel
+                return (
                 <button
                   key={idx}
                   onClick={() => setActiveConfig(idx)}
@@ -145,9 +159,10 @@ export default function LoggingSystem() {
                       : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
                   }`}
                 >
-                  <span className="block truncate">{config.title}</span>
+          <span className="block truncate">{label}</span>
                 </button>
-              ))}
+                )
+              })}
             </div>
 
             {/* Tab Content */}
@@ -158,10 +173,10 @@ export default function LoggingSystem() {
               className="p-4 sm:p-6"
             >
               <div className="bg-gray-900 rounded-lg p-3 sm:p-4 overflow-x-auto">
-                <pre className="text-green-400 text-xs sm:text-sm leading-relaxed overflow-safe">
-                  <code>{configExamples[activeConfig].code}</code>
-                </pre>
-              </div>
+                  <pre className="text-green-400 text-xs sm:text-sm leading-relaxed overflow-safe">
+                    <code>{configExamples[activeConfig].code}</code>
+                  </pre>
+                </div>
             </motion.div>
           </div>
         </motion.div>

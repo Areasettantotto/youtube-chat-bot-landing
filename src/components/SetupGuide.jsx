@@ -1,62 +1,63 @@
 import MotionLayout, { motion, childVariants } from './MotionLayout.jsx'
 import { useState } from 'react'
-
-const setupSteps = [
-	{
-		id: 1,
-		icon: '📥',
-		title: 'Clone e Installazione',
-		description: 'Scarica il progetto e installa le dipendenze',
-		code: `git clone https://github.com/Areasettantotto/youtube-chat-bot
-cd youtube-chat-bot
-npm install`,
-	},
-	{
-		id: 2,
-		icon: '🔑',
-		title: 'Google API Setup',
-		description: 'Configura le credenziali YouTube Data API v3',
-		steps: [
-			'Vai su Google Cloud Console',
-			'Crea un nuovo progetto',
-			'Abilita YouTube Data API v3',
-			'Crea credenziali OAuth 2.0',
-			'Scarica client_secret.json',
-		],
-	},
-	{
-		id: 3,
-		icon: '⚙️',
-		title: 'Configurazione Environment',
-		description: 'Imposta le variabili di ambiente',
-		code: `# Copia il file di esempio
-cp .env.example .env
-
-# Modifica con le tue impostazioni
-nano .env`,
-	},
-	{
-		id: 4,
-		icon: '🚀',
-		title: 'Prima Esecuzione',
-		description: 'Autorizza il bot e inizia a usarlo',
-		code: `node index.js`,
-	},
-]
+import { useLanguage } from '../hooks/useLanguage.jsx'
 
 export default function SetupGuide() {
 	const [activeStep, setActiveStep] = useState(1)
+	const { t } = useLanguage()
+
+	const setupSteps = [
+		{
+			id: 1,
+			icon: '📥',
+			title: t('setup.step1.title'),
+			description: t('setup.step1.description'),
+			code: `git clone https://github.com/Areasettantotto/youtube-chat-bot
+cd youtube-chat-bot
+npm install`,
+		},
+		{
+			id: 2,
+			icon: '🔑',
+			title: t('setup.step2.title'),
+			description: t('setup.step2.description'),
+			steps: [
+				t('setup.step2.step1'),
+				t('setup.step2.step2'),
+				t('setup.step2.step3'),
+				t('setup.step2.step4'),
+				t('setup.step2.step5'),
+			],
+		},
+		{
+			id: 3,
+			icon: '⚙️',
+			title: t('setup.step3.title'),
+			description: t('setup.step3.description'),
+			code: `# Copy the example file
+cp .env.example .env
+
+# Edit with your settings
+nano .env`,
+		},
+		{
+			id: 4,
+			icon: '🚀',
+			title: t('setup.step4.title'),
+			description: t('setup.step4.description'),
+			code: `node index.js`,
+		},
+	]
 
 	return (
 		<MotionLayout id="setup" className="bg-gray-50 dark:bg-gray-900 pb-20">
 			<div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 				<motion.div className="text-center mb-8 sm:mb-12" variants={childVariants}>
 					<h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white overflow-safe">
-						🚀 Guida Setup Completa
+						{t('setup.title')}
 					</h2>
 					<p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-2 overflow-safe">
-						Segui questi semplici passaggi per configurare il tuo YouTube Live Chat
-						Bot
+						{t('setup.subtitle')}
 					</p>
 				</motion.div>
 

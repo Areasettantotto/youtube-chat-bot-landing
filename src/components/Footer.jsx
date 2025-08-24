@@ -1,10 +1,13 @@
 import MotionLayout, { motion, childVariants } from './MotionLayout.jsx'
+import { useLanguage } from '../hooks/useLanguage.jsx'
 
 export default function Footer() {
+  const { t } = useLanguage()
+
   const socialLinks = [
-    { name: 'GitHub', url: 'https://github.com/Areasettantotto/youtube-chat-bot.git', icon: '🔗' },
-    { name: 'LinkedIn', url: 'https://linkedin.com', icon: '💼' },
-    { name: 'YouTube', url: 'https://youtube.com', icon: '📺' }
+    { key: 'github', name: t('footer.social.github'), url: 'https://github.com/Areasettantotto/youtube-chat-bot.git', icon: '🔗' },
+    { key: 'linkedin', name: t('footer.social.linkedin'), url: 'https://linkedin.com', icon: '💼' },
+    { key: 'youtube', name: t('footer.social.youtube'), url: 'https://youtube.com', icon: '📺' }
   ]
 
   return (
@@ -15,10 +18,10 @@ export default function Footer() {
           variants={childVariants}
         >
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white overflow-safe">
-            🚀 Pronto a iniziare?
+            {t('footer.ctaTitle')}
           </h3>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-6 overflow-safe">
-            Porta il tuo canale YouTube al livello successivo con interazioni coinvolgenti in tempo reale.
+            {t('footer.ctaSubtitle')}
           </p>
           <motion.a
             href="mailto:areasettantotto@icloud.com"
@@ -26,7 +29,7 @@ export default function Footer() {
             whileTap={{ scale: 0.95 }}
             className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full shadow-lg transition-all duration-300 font-semibold text-sm sm:text-base"
           >
-            📧 Contattami
+            {t('footer.ctaButton')}
           </motion.a>
         </motion.div>
 
@@ -61,7 +64,7 @@ export default function Footer() {
               whileTap={{ scale: 0.95 }}
               className="inline-block bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-900/40 transition-colors whitespace-nowrap"
             >
-              📋 Privacy Policy
+              {t('footer.policy')}
             </motion.a>
             <motion.a
               href="mailto:areasettantotto@icloud.com"
@@ -69,14 +72,14 @@ export default function Footer() {
               whileTap={{ scale: 0.95 }}
               className="inline-block bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors whitespace-nowrap"
             >
-              📧 Supporto
+              {t('footer.support')}
             </motion.a>
           </div>
 
           <div className="text-sm sm:text-base text-gray-500 dark:text-gray-400 space-y-2 overflow-safe">
-            <p>© 2025 Marco Busato - Areasettantotto. Tutti i diritti riservati.</p>
+            <p>{t('footer.copyright')}</p>
             <p className="text-xs text-gray-400 dark:text-gray-500">
-              Realizzato con ❤️ usando React, Tailwind CSS e Framer Motion
+              {t('footer.builtWith')}
             </p>
           </div>
         </motion.div>
