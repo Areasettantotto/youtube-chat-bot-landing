@@ -1,12 +1,22 @@
 // check-pt-mt.js
+// Script per individuare l'uso simultaneo di classi con prefissi "pt-" e "mt-"
+// in una stessa riga di codice, che può causare conflitti di stile.
+// Se trovate, le righe vengono evidenziate e il file viene aperto in VS Code.
+//
+// Uso: node tests/check-pt-mt.js
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 
 /* ==============================
    CONFIGURAZIONE
    ============================== */
-const ROOT_DIR = './src'; // cartella di partenza
+// Simulazione __dirname in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const ROOT_DIR = path.resolve(__dirname, '../src'); // parte da src
 const FILE_EXTENSIONS = ['.jsx', '.js', '.tsx', '.ts']; // estensioni da analizzare
 const CLASS_PREFIXES = ['pt', 'mt']; // prefissi delle classi da cercare
 const HIGHLIGHT_COLORS = {
@@ -30,7 +40,9 @@ function openInVSCode(filePath, line) {
   try {
     execSync(`code -g "${filePath}:${line}"`);
   } catch (err) {
-    console.error(`${COLOR_YELLOW}⚠️ Impossibile aprire il file in VS Code. Assicurati che 'code' sia disponibile nel PATH.${COLOR_RESET}`);
+    console.error(
+      `${COLOR_YELLOW}⚠️ Impossibile aprire il file in VS Code. Assicurati che 'code' sia disponibile nel PATH.${COLOR_RESET}`
+    );
   }
 }
 
@@ -62,7 +74,9 @@ function checkFile(filePath) {
       console.log(
         '   ' +
           matches
-            .map(({ prefix, values }) => `${prefix}: ${(HIGHLIGHT_COLORS[prefix] || '')}${values.join(', ')}${COLOR_RESET}`)
+            .map(({ prefix, values }) =>
+              `${prefix}: ${(HIGHLIGHT_COLORS[prefix] || '')}${values.join(', ')}${COLOR_RESET}`
+            )
             .join(' | ')
       );
       console.log('');
