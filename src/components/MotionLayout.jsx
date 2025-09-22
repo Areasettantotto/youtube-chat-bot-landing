@@ -17,14 +17,7 @@ export default function MotionLayout({ children, className = "", id }) {
     }
   }
 
-  const childVariants = {
-    hidden: { opacity: 0, y: 15 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
-  }
+  // childVariants are centralized in src/animations/variants.js
 
   return (
     <motion.section
@@ -42,11 +35,4 @@ export default function MotionLayout({ children, className = "", id }) {
 
 export { motion }
 
-export const childVariants = {
-  hidden: { opacity: 0, y: 15 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" }
-  }
-}
+// childVariants have been centralized in src/animations/variants.js

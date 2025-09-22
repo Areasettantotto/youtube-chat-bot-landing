@@ -1,4 +1,5 @@
-import MotionLayout, { motion, childVariants } from './MotionLayout.jsx'
+import MotionLayout, { motion } from './MotionLayout.jsx'
+import { childVariants } from '../animations/variants'
 import { useState } from 'react'
 
 const troubleshootingItems = [
