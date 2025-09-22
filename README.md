@@ -4,6 +4,12 @@
 
 A complete landing page for the **YouTube Live Chat Contest Bot**, an advanced system for organizing interactive contests during YouTube live streams. The landing includes full documentation, setup guide, and a policy page for Google approval.
 
+## 🔗 Live demo
+
+Visit the public demo of the site here:
+
+- https://youtube-live-chat-guess.onrender.com/
+
 ## ✨ Landing Features
 
 ### 🏠 Main Sections
