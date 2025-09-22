@@ -27,17 +27,15 @@ function App() {
   }, [dark])
 
   return (
-    <div className="font-sans min-h-screen w-full overflow-x-hidden">
-      <div className="w-full min-h-screen overflow-x-hidden">
-        <Header dark={dark} setDark={setDark} />
-        <section id="hero"><Hero /></section>
-        <section id="setup"><SetupGuide /></section>
-        <section id="features"><Features /></section>
-        <section id="multilingual"><MultilingualSupport /></section>
-        <section id="logging"><LoggingSystem /></section>
-        <section id="troubleshooting"><Troubleshooting /></section>
-        <section id="footer"><Footer /></section>
-      </div>
+    <div className="font-sans w-full overflow-x-hidden">
+      <Header dark={dark} setDark={setDark} />
+      <section id="hero"><Hero /></section>
+      <section id="setup"><SetupGuide /></section>
+      <section id="features"><Features /></section>
+      <section id="multilingual"><MultilingualSupport /></section>
+      <section id="logging"><LoggingSystem /></section>
+      <section id="troubleshooting"><Troubleshooting /></section>
+      <section id="footer"><Footer /></section>
     </div>
   )
 }

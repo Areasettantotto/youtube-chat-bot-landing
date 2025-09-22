@@ -50,6 +50,39 @@
     max-width: 100%;
   }
 
+  /* Prevent section elements from creating internal vertical scrollbars by default.
+     Use .no-section-scroll to mark sections that must not scroll internally. If a
+     container requires scrolling (mobile menu, code blocks), add .scrollable or
+     a specific class (e.g. .mobile-menu) to opt back into scrolling. */
+  section,
+  .no-section-scroll {
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: auto;
+  }
+
+  /* Opt-in scrollable containers */
+  .scrollable,
+  .mobile-menu {
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Pre/code often need scrolling for long lines */
+  pre,
+  code {
+    overflow: auto;
+    max-width: 100%;
+  }
+
+  /* If a section must appear full-screen, prefer calculating with header size
+     to avoid 100vh + padding overflow. Consumers should use the .full-view helper */
+  .full-view {
+    min-height: calc(100vh - 4rem); /* conservative default; tune per layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   html, body, header {
     border: none !important;
     box-shadow: none !important;
