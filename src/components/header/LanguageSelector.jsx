@@ -109,7 +109,7 @@ export default function LanguageSelector({ flagOnly = false }) {
                   onClick={() => handleLanguageChange(lang.code)}
                   className={`w-full flex items-center space-x-3 px-5 py-3 text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${
                     lang.code === currentLanguage
-                      ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
+                      ? 'bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400'
                       : 'text-gray-700 dark:text-gray-300'
                   }`}
                   whileHover={{ x: 4 }}
@@ -118,7 +118,7 @@ export default function LanguageSelector({ flagOnly = false }) {
                   <span className="text-lg">{lang.flag}</span>
                   <span className="text-sm font-medium">{lang.name}</span>
                   {lang.code === currentLanguage && (
-                    <span className="ml-auto text-blue-500">✓</span>
+                    <span className="ml-auto text-green-500">✓</span>
                   )}
                 </motion.button>
               ))}

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-export default function Logo({ small = false }) {
+export default function Logo({ small = false, size = 'normal' }) {
   const [altTextIdx, setAltTextIdx] = useState(0)
   const altTexts = [
     'YouTube',
@@ -12,12 +12,13 @@ export default function Logo({ small = false }) {
   ]
 
   useEffect(() => {
-    if (small) return
+    // do not run the rotating alt text for compact or big icon-only variants
+    if (small || size === 'big') return
     const interval = setInterval(() => {
       setAltTextIdx(idx => (idx + 1) % altTexts.length)
     }, 1500)
     return () => clearInterval(interval)
-  }, [small])
+  }, [small, size])
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -31,10 +32,11 @@ export default function Logo({ small = false }) {
       onClick={handleLogoClick}
     >
       {/* YouTube-inspired icon con chat bubble */}
-      <div className="relative w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 dark:from-red-400 dark:to-red-500 rounded-lg flex items-center justify-center shadow-lg">
+  {/* size variations: compact (small), normal (icon + text), big (large icon-only) */}
+  <div className={`relative ${size === 'big' ? 'w-16 h-16' : 'w-10 h-10'} bg-gradient-to-br from-red-500 to-red-600 dark:from-red-400 dark:to-red-500 rounded-lg flex items-center justify-center shadow-lg`}>
         {/* YouTube Play Icon */}
         <svg
-          className="w-9 h-9 text-white"
+          className={`${size === 'big' ? 'w-14 h-14' : 'w-9 h-9'} text-white`}
           viewBox="0 0 64 64"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -59,10 +61,11 @@ export default function Logo({ small = false }) {
           <text x="52" y="18" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#222">?</text>
         </svg>
         {/* Chat indicator */}
-        <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 dark:bg-green-300 rounded-full border-2 border-white dark:border-gray-800"></div>
+        <div className={`${size === 'big' ? 'absolute -top-1 -right-1 w-4 h-4' : 'absolute -top-1 -right-1 w-3 h-3'} bg-green-400 dark:bg-green-300 rounded-full border-2 border-white dark:border-gray-800`}></div>
       </div>
 
-      {!small && (
+      {/* Show text only for normal (non-small, non-big) variant */}
+      {!small && size !== 'big' && (
         <div>
           <h1 className="text-xl font-bold text-gray-900 dark:text-white leading-tight">
             Chat Guess

@@ -8,7 +8,7 @@ export default function Footer() {
   const socialLinks = [
     { key: 'github', name: t('footer.social.github'), url: 'https://github.com/Areasettantotto/youtube-chat-bot.git', icon: '🔗' },
     { key: 'linkedin', name: t('footer.social.linkedin'), url: 'https://linkedin.com', icon: '💼' },
-    { key: 'youtube', name: t('footer.social.youtube'), url: 'https://youtube.com', icon: '📺' }
+    { key: 'youtube', name: t('footer.social.youtube'), url: 'https://www.youtube.com/@fabiorizzi6370/streams', icon: '📺' }
   ]
 
   return (
@@ -28,7 +28,9 @@ export default function Footer() {
             href="mailto:areasettantotto@icloud.com"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full shadow-lg transition-all duration-300 font-semibold text-sm sm:text-base"
+            // className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full shadow-lg transition-all duration-300 font-semibold text-sm sm:text-base"
+            // className="inline-block bg-gradient-to-r from-gray-900 to-gray-700 hover:from-black hover:to-gray-800 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full shadow-lg transition-all duration-300 font-semibold text-sm sm:text-base"
+            className="inline-block bg-gradient-to-r from-green-500 to-lime-500 hover:from-green-600 hover:to-lime-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full shadow-lg transition-all duration-300 font-semibold text-sm sm:text-base"
           >
             {t('footer.ctaButton')}
           </motion.a>
@@ -66,14 +68,6 @@ export default function Footer() {
               className="inline-block bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-900/40 transition-colors whitespace-nowrap"
             >
               {t('footer.policy')}
-            </motion.a>
-            <motion.a
-              href="mailto:areasettantotto@icloud.com"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors whitespace-nowrap"
-            >
-              {t('footer.support')}
             </motion.a>
           </div>
 

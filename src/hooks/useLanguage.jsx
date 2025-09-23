@@ -22,9 +22,9 @@ const languages = {
       'header.menu': 'Menu',
 
       // Hero section
-      'hero.title': '🎯 Live Chat Guess',
-      'hero.subtitle': 'Coinvolgi il tuo pubblico con un gioco a premi in tempo reale durante le tue dirette.',
-      'hero.cta': 'Scopri come funziona',
+      'hero.title': 'Live Chat Guess Bot',
+      'hero.subtitle': 'Il tuo assistente in tempo reale per trasformare la chat in un gioco coinvolgente.',
+      'hero.cta': '🚀 Scopri come funziona',
 
       // Multilingual support
       'multilingual.title': '🌍 Supporto Multilingua',
@@ -52,7 +52,7 @@ const languages = {
 
       // Setup Guide
       'setup.title': '🚀 Guida Setup Completa',
-      'setup.subtitle': 'Segui questi semplici passaggi per configurare il tuo YouTube Live Chat Bot',
+      'setup.subtitle': 'Segui questi semplici passaggi per configurare il tuo YouTube Live Chat Guess Bot',
       'setup.step1.title': 'Clone e Installazione',
       'setup.step1.description': 'Scarica il progetto e installa le dipendenze',
       'setup.step2.title': 'Google API Setup',
@@ -68,14 +68,13 @@ const languages = {
       'setup.step4.description': 'Autorizza il bot e inizia a usarlo',
 
       // Footer
-      'footer.ctaTitle': '🚀 Pronto a iniziare?',
+      'footer.ctaTitle': '🎮 Pronto a iniziare?',
       'footer.ctaSubtitle': 'Porta il tuo canale YouTube al livello successivo con interazioni coinvolgenti in tempo reale.',
       'footer.ctaButton': '📧 Contattami',
       'footer.social.github': 'GitHub',
       'footer.social.linkedin': 'LinkedIn',
-      'footer.social.youtube': 'YouTube',
+      'footer.social.youtube': 'YouTube (Utenti Test)',
       'footer.policy': '📋 Privacy Policy',
-      'footer.support': '📧 Supporto',
       'footer.copyright': '© 2025 Marco Busato - Areasettantotto. Tutti i diritti riservati.',
       'footer.builtWith': 'Realizzato con ❤️ usando React, Tailwind CSS e Framer Motion',
 
@@ -105,8 +104,8 @@ const languages = {
       'header.menu': 'Menu',
 
       // Hero section
-      'hero.title': '🎯 Live Chat Guess',
-      'hero.subtitle': 'Engage your audience with real-time prize games during your live streams.',
+      'hero.title': 'Live Chat Guess Bot',
+      'hero.subtitle': 'Your real-time assistant to turn chat into an engaging game.',
       'hero.cta': 'Discover how it works',
 
       // Multilingual support
@@ -135,7 +134,7 @@ const languages = {
 
       // Setup Guide
       'setup.title': '🚀 Complete Setup Guide',
-      'setup.subtitle': 'Follow these simple steps to configure your YouTube Live Chat Bot',
+      'setup.subtitle': 'Follow these simple steps to configure your YouTube Live Chat Guess Bot',
       'setup.step1.title': 'Clone & Install',
       'setup.step1.description': 'Download the project and install dependencies',
       'setup.step2.title': 'Google API Setup',
@@ -151,14 +150,13 @@ const languages = {
       'setup.step4.description': "Authorize the bot and start using it",
 
       // Footer
-      'footer.ctaTitle': '🚀 Ready to get started?',
+      'footer.ctaTitle': '🎮 Ready to get started?',
       'footer.ctaSubtitle': 'Bring your YouTube channel to the next level with engaging real-time interactions.',
       'footer.ctaButton': '📧 Contact me',
       'footer.social.github': 'GitHub',
       'footer.social.linkedin': 'LinkedIn',
-      'footer.social.youtube': 'YouTube',
+      'footer.social.youtube': 'YouTube (Users Test)',
       'footer.policy': '📋 Privacy Policy',
-      'footer.support': '📧 Support',
       'footer.copyright': '© 2025 Marco Busato - Areasettantotto. All rights reserved.',
       'footer.builtWith': 'Built with ❤️ using React, Tailwind CSS and Framer Motion',
 
@@ -188,9 +186,9 @@ const languages = {
       'header.menu': 'Меню',
 
       // Hero section
-      'hero.title': '🎯 Live Chat Guess',
-      'hero.subtitle': 'Вовлекайте свою аудиторию в призовые игры в реальном времени во время прямых трансляций.',
-      'hero.cta': 'Узнать как это работает',
+      'hero.title': 'Live Chat Guess Bot',
+      'hero.subtitle': 'Ваш помощник в реальном времени, превращающий чат в увлекательную игру.',
+      'hero.cta': 'Узнать, как это работает',
 
       // Multilingual support
       'multilingual.title': '🌍 Поддержка нескольких языков',
@@ -218,7 +216,7 @@ const languages = {
 
       // Setup Guide
       'setup.title': '🚀 Полное руководство по настройке',
-      'setup.subtitle': 'Следуйте этим простым шагам для настройки вашего YouTube Live Chat Bot',
+      'setup.subtitle': 'Следуйте этим простым шагам для настройки вашего YouTube Live Chat Guess Bot',
       'setup.step1.title': 'Клонирование и установка',
       'setup.step1.description': 'Скачайте проект и установите зависимости',
       'setup.step2.title': 'Настройка Google API',
@@ -234,14 +232,13 @@ const languages = {
       'setup.step4.description': 'Авторизуйте бота и начните использовать',
 
       // Footer
-      'footer.ctaTitle': '🚀 Готовы начать?',
+      'footer.ctaTitle': '🎮 Готовы начать?',
       'footer.ctaSubtitle': 'Поднимите свой канал YouTube на новый уровень с помощью вовлекающих действий в реальном времени.',
       'footer.ctaButton': '📧 Связаться',
       'footer.social.github': 'GitHub',
       'footer.social.linkedin': 'LinkedIn',
-      'footer.social.youtube': 'YouTube',
+      'footer.social.youtube': 'YouTube (Тестовые пользователи)',
       'footer.policy': '📋 Политика конфиденциальности',
-      'footer.support': '📧 Поддержка',
       'footer.copyright': '© 2025 Marco Busato - Areasettantotto. Все права защищены.',
       'footer.builtWith': 'Создано с ❤️ используя React, Tailwind CSS и Framer Motion',
 
@@ -271,8 +268,8 @@ const languages = {
       'header.menu': '菜单',
 
       // Hero section
-      'hero.title': '🎯 Live Chat Guess',
-      'hero.subtitle': '在直播期间通过实时奖品游戏吸引您的观众。',
+      'hero.title': 'Live Chat Guess Bot',
+      'hero.subtitle': '您的实时助手，将聊天变成有趣的游戏。',
       'hero.cta': '了解工作原理',
 
       // Multilingual support
@@ -301,7 +298,7 @@ const languages = {
 
       // Setup Guide
       'setup.title': '🚀 完整设置指南',
-      'setup.subtitle': '按照这些简单步骤配置您的 YouTube 实时聊天机器人',
+      'setup.subtitle': '按照这些简单步骤配置您的 YouTube Live Chat Guess Bot',
       'setup.step1.title': '克隆与安装',
       'setup.step1.description': '下载项目并安装依赖',
       'setup.step2.title': 'Google API 设置',
@@ -317,14 +314,13 @@ const languages = {
       'setup.step4.description': '授权机器人并开始使用',
 
       // Footer
-      'footer.ctaTitle': '🚀 准备好开始了吗？',
+      'footer.ctaTitle': '🎮 准备好开始了吗？',
       'footer.ctaSubtitle': '通过实时互动将您的 YouTube 频道提升到一个新的水平。',
       'footer.ctaButton': '📧 联系我',
       'footer.social.github': 'GitHub',
       'footer.social.linkedin': 'LinkedIn',
-      'footer.social.youtube': 'YouTube',
+      'footer.social.youtube': 'YouTube (测试用户)',
       'footer.policy': '📋 隐私政策',
-      'footer.support': '📧 支持',
       'footer.copyright': '© 2025 Marco Busato - Areasettantotto。保留所有权利。',
       'footer.builtWith': '使用 ❤️ 构建，基于 React、Tailwind CSS 和 Framer Motion',
 
@@ -354,8 +350,8 @@ const languages = {
       'header.menu': 'القائمة',
 
       // Hero section
-      'hero.title': '🎯 Live Chat Guess',
-      'hero.subtitle': 'اجعل جمهورك يشارك في ألعاب الجوائز في الوقت الفعلي أثناء البث المباشر.',
+      'hero.title': 'Live Chat Guess Bot',
+      'hero.subtitle': 'مساعدك في الوقت الحقيقي لتحويل الدردشة إلى لعبة ممتعة.',
       'hero.cta': 'اكتشف كيف يعمل',
 
       // Multilingual support
@@ -384,7 +380,7 @@ const languages = {
 
       // Setup Guide
       'setup.title': '🚀 دليل إعداد كامل',
-      'setup.subtitle': 'اتبع هذه الخطوات البسيطة لتكوين روبوت دردشة YouTube المباشرة الخاص بك',
+      'setup.subtitle': 'اتبع هذه الخطوات البسيطة لتكوين روبوت دردشة YouTube Live Chat Guess Bot',
       'setup.step1.title': 'استنساخ والتثبيت',
       'setup.step1.description': 'قم بتنزيل المشروع وتثبيت التبعيات',
       'setup.step2.title': 'إعداد Google API',
@@ -405,9 +401,8 @@ const languages = {
       'footer.ctaButton': '📧 اتصل',
       'footer.social.github': 'GitHub',
       'footer.social.linkedin': 'LinkedIn',
-      'footer.social.youtube': 'YouTube',
+      'footer.social.youtube': 'YouTube (مستخدمو الاختبار)',
       'footer.policy': '📋 سياسة الخصوصية',
-      'footer.support': '📧 الدعم',
       'footer.copyright': '© 2025 Marco Busato - Areasettantotto. جميع الحقوق محفوظة.',
       'footer.builtWith': 'تم الإنشاء بـ ❤️ باستخدام React و Tailwind CSS و Framer Motion',
 

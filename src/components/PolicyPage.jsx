@@ -186,7 +186,7 @@ export default function PolicyPage() {
         </motion.div>
 
         {/* Google Compliance Badge */}
-        <motion.div
+        {/*<motion.div
           className="mt-16 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-xl p-8 text-center border border-green-200 dark:border-green-700"
           variants={itemVariants}
         >
@@ -212,7 +212,7 @@ export default function PolicyPage() {
               <span className="text-gray-600 dark:text-gray-400">OAuth 2.0 Secure</span>
             </div>
           </div>
-        </motion.div>
+        </motion.div>*/}
 
         {/* Footer */}
         <motion.footer
