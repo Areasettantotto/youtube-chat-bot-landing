@@ -73,7 +73,7 @@ nano .env`,
 								key={step.id}
 								className={`p-3 sm:p-4 rounded-lg border-2 cursor-pointer transition-all duration-300 overflow-hidden ${
 									activeStep === step.id
-										? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+										? 'border-green-500 bg-green-50 dark:bg-green-900/20'
 										: 'border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800'
 								}`}
 								onClick={() => setActiveStep(step.id)}
@@ -142,7 +142,7 @@ nano .env`,
 													key={idx}
 													className="flex items-start space-x-2 text-gray-700 dark:text-gray-300 text-sm"
 												>
-													<span className="w-5 h-5 sm:w-6 sm:h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+													<span className="w-5 h-5 sm:w-6 sm:h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
 														{idx + 1}
 													</span>
 													<span className="overflow-safe flex-1">{stepItem}</span>
