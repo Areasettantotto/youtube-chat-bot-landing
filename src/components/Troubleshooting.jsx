@@ -173,8 +173,8 @@ export default function Troubleshooting() {
                     💻 Comando da eseguire:
                   </h4>
                   <div className="bg-gray-900 rounded-lg p-3 sm:p-4 overflow-x-auto">
-                    <pre className="text-green-400 text-xs sm:text-sm leading-relaxed overflow-safe">
-                      <code>{activeItemData.code}</code>
+                    <pre className="text-green-400 text-xs sm:text-sm leading-relaxed overflow-safe whitespace-pre-wrap break-words max-w-full">
+                      <code className="break-words">{activeItemData.code}</code>
                     </pre>
                   </div>
                 </div>
@@ -198,8 +198,8 @@ export default function Troubleshooting() {
           </div>
 
           <div className="bg-gray-900 rounded-lg p-3 sm:p-4 lg:p-6 overflow-x-auto">
-            <pre className="text-green-400 text-xs sm:text-sm leading-relaxed overflow-safe">
-              <code>{debugConfig.code}</code>
+            <pre className="text-green-400 text-xs sm:text-sm leading-relaxed overflow-safe whitespace-pre-wrap break-words max-w-full">
+              <code className="break-words">{debugConfig.code}</code>
             </pre>
           </div>
 
