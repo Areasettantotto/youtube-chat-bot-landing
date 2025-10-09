@@ -22,7 +22,7 @@ export default function Bubble({ visible, left, top, side, username, kind, attem
         <span className="bubble-text">
           {username}
           <br />
-          {kind === 'red' ? (<span className="text-xs font-normal">⚠️ attempts exhausted</span>) : null}
+          {kind === 'red' ? (<span className="text-xs font-normal">❌ attempts exhausted</span>) : null}
           {kind === 'green' ? (<span className="text-xs font-normal">✅ {attempts} attempts available</span>) : null}
         </span>
       </div>
