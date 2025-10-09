@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import { createPortal } from 'react-dom'
 import Bubble from './Bubble.jsx'
 
-export default function ParticlesBackground() {
+export default function ParticlesBackground({ maxParticles = null, disableHoverOnMobile = false }) {
   const canvasRef = useRef(null)
   const animationRef = useRef(null)
   const particlesRef = useRef([]) // persist particles across frames
@@ -97,7 +97,9 @@ export default function ParticlesBackground() {
 
       // choose particle count by area (keeps density consistent)
       const area = width * height
-      const count = Math.min(200, Math.max(30, Math.round(area / 12000)))
+      const defaultCount = Math.min(200, Math.max(30, Math.round(area / 12000)))
+      // if parent provided a maxParticles, respect it but keep a small minimum
+      const count = maxParticles ? Math.max(10, Math.min(maxParticles, defaultCount)) : defaultCount
       particlesRef.current = Array.from({ length: count }, () =>
         createParticle(width, height)
       )
@@ -220,8 +222,8 @@ export default function ParticlesBackground() {
 
     animationRef.current = requestAnimationFrame(draw)
 
-    // hover interaction (desktop only)
-    const supportsHover = window.matchMedia && window.matchMedia('(hover: hover)').matches
+  // hover interaction (desktop only) - can be disabled on mobile by prop
+  const supportsHover = window.matchMedia && window.matchMedia('(hover: hover)').matches && !(disableHoverOnMobile && window.matchMedia && window.matchMedia('(pointer: coarse)').matches)
     let mouseMoveHandler = null
     let mouseLeaveHandler = null
 

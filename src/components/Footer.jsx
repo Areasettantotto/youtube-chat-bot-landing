@@ -1,6 +1,7 @@
 import MotionLayout, { motion } from './MotionLayout.jsx'
 import { childVariants } from '../animations/variants'
 import { useLanguage } from '../hooks/useLanguage.jsx'
+import ParticlesBackground from './ParticlesBackground.jsx'
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -12,8 +13,9 @@ export default function Footer() {
   ]
 
   return (
-    <MotionLayout className="text-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="w-full max-w-4xl mx-auto">
+    <MotionLayout className="relative overflow-hidden text-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+  <ParticlesBackground maxParticles={40} disableHoverOnMobile={true} />
+      <div className="relative z-10 w-full max-w-4xl mx-auto">
         <motion.div
           className="mb-8"
           variants={childVariants}
