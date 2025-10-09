@@ -1,4 +1,6 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
+import { createPortal } from 'react-dom'
+import Bubble from './Bubble.jsx'
 
 export default function ParticlesBackground() {
   const canvasRef = useRef(null)
@@ -7,22 +9,41 @@ export default function ParticlesBackground() {
   const resizeObserverRef = useRef(null)
   const resizeFallbackRef = useRef(null)
   const bubbleRef = useRef(null)
+  const [bubbleState, setBubbleState] = useState({ visible: false, left: 0, top: 0, side: 'above', username: '', kind: '', attempts: 0 })
   const hoveredRef = useRef(null)
   const pauseMotionRef = useRef(false)
 
   // helper: create one particle inside width/height
-  const createParticle = (w, h) => ({
-    x: Math.random() * w,
-    y: Math.random() * h,
-    // keep original small particle sizes
-    r: Math.random() * 1.8 + 0.6,
-    vx: (Math.random() - 0.5) * 0.6,
-    vy: (Math.random() - 0.5) * 0.6,
-    // fixed label per particle
-    label: String(Math.floor(1 + Math.random() * 999)),
-    // mark some particles active (~22%)
-    active: Math.random() < 0.22,
-  })
+  const USERNAMES = [
+    'Alex', 'Sam', 'Jordan', 'Taylor', 'Casey', 'Riley', 'Morgan', 'Avery', 'Jamie', 'Drew',
+    'Harper', 'Quinn', 'Rowan', 'Parker', 'Reese', 'Skyler', 'Blake', 'Devon', 'Finley', 'Elliot'
+  ]
+
+  // kinds: 'red' (out of attempts), 'green' (x attempts available), 'white' (non interactive)
+  const createParticle = (w, h) => {
+  // choose kind probabilities: make red/green more common so more interactivity
+  const r = Math.random()
+  let kind = 'white'
+  // new distribution: red ~20%, green ~30%, white ~50%
+  if (r < 0.20) kind = 'red'
+  else if (r < 0.50) kind = 'green'
+
+    const username = USERNAMES[Math.floor(Math.random() * USERNAMES.length)]
+    const attempts = kind === 'green' ? Math.max(1, Math.ceil(Math.random() * 8)) : 0
+
+    return {
+      x: Math.random() * w,
+      y: Math.random() * h,
+      // keep original small particle sizes
+      r: Math.random() * 1.8 + 0.6,
+      vx: (Math.random() - 0.5) * 0.6,
+      vy: (Math.random() - 0.5) * 0.6,
+      // per-particle metadata
+      username,
+      kind,
+      attempts,
+    }
+  }
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -32,6 +53,25 @@ export default function ParticlesBackground() {
 
     const ctx = canvas.getContext("2d")
     if (!ctx) return
+
+    // create a portal root element appended to document.body so the bubble won't be clipped
+    let portalRoot = null
+    try {
+      portalRoot = document.createElement('div')
+      // keep it unstyled here; bubble element inside will be positioned absolutely
+      portalRoot.className = 'particles-bubble-root'
+      document.body.appendChild(portalRoot)
+      bubbleRef.current = portalRoot
+    } catch (e) {
+      portalRoot = null
+      bubbleRef.current = null
+    }
+
+    // expose portal root to render via React Portal
+    // use a state setter outside the effect to avoid re-render complexity; but we can keep a ref
+    // we'll set a property on canvas to allow rendering below (see return)
+    // store as a data attribute on canvas for read in render (not ideal but keeps changes minimal)
+    if (portalRoot && canvas) canvas.dataset.portalroot = '1'
 
     let width = 0
     let height = 0
@@ -108,11 +148,12 @@ export default function ParticlesBackground() {
           if (p.y > height) { p.y = height; p.vy *= -1 }
         }
 
-        // color per particle (active vs normal), compatible with light/dark
+        // color per particle based on kind
         let pFill
-        if (p.active) {
-          // active particles are red
+        if (p.kind === 'red') {
           pFill = isDark ? 'rgba(239,68,68,0.95)' : 'rgba(239,68,68,0.9)'
+        } else if (p.kind === 'green') {
+          pFill = isDark ? 'rgba(34,197,94,0.95)' : 'rgba(34,197,94,0.9)'
         } else {
           pFill = isDark ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.6)'
         }
@@ -122,7 +163,8 @@ export default function ParticlesBackground() {
         if (isHovered) {
           ctx.save()
           ctx.shadowBlur = 12
-          ctx.shadowColor = p.active ? 'rgba(239,68,68,0.95)' : (isDark ? 'rgba(255,255,255,0.95)' : 'rgba(0,0,0,0.25)')
+          // shadow color follows kind
+          ctx.shadowColor = p.kind === 'red' ? 'rgba(239,68,68,0.95)' : (p.kind === 'green' ? 'rgba(34,197,94,0.95)' : (isDark ? 'rgba(255,255,255,0.95)' : 'rgba(0,0,0,0.25)'))
           ctx.fillStyle = pFill
           ctx.beginPath()
           ctx.arc(p.x, p.y, Math.max(2.8, p.r * 1.6), 0, Math.PI * 2)
@@ -131,10 +173,23 @@ export default function ParticlesBackground() {
         }
 
         // base draw (small dot)
-        ctx.fillStyle = pFill
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        ctx.fill()
+        const isBaseColored = p.kind === 'red' || p.kind === 'green'
+        // if not hovered, draw a subtle colored glow for active kinds
+        if (isBaseColored && !isHovered) {
+          ctx.save()
+          ctx.shadowBlur = 8
+          ctx.shadowColor = p.kind === 'red' ? 'rgba(239,68,68,0.22)' : 'rgba(34,197,94,0.22)'
+          ctx.fillStyle = pFill
+          ctx.beginPath()
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
+          ctx.fill()
+          ctx.restore()
+        } else {
+          ctx.fillStyle = pFill
+          ctx.beginPath()
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
+          ctx.fill()
+        }
       }
 
       // draw links (simple O(n^2) but with small counts it's fine)
@@ -180,7 +235,7 @@ export default function ParticlesBackground() {
 
     if (supportsHover) {
       canvas.style.pointerEvents = 'auto'
-      const threshold = 28 // px - how close the mouse must be to a particle
+  const threshold = 40 // px - how close the mouse must be to a particle (increased for easier hover)
 
       mouseMoveHandler = (ev) => {
         const rect = canvas.getBoundingClientRect()
@@ -188,7 +243,8 @@ export default function ParticlesBackground() {
         const my = ev.clientY - rect.top
 
         // find nearest particle within threshold
-        const parts = particlesRef.current
+        // only consider interactive particles (red/green) when finding nearest
+        const parts = particlesRef.current.filter(p => p.kind === 'red' || p.kind === 'green')
         let nearest = null
         let nearestDist = Infinity
         for (let i = 0; i < parts.length; i++) {
@@ -202,102 +258,42 @@ export default function ParticlesBackground() {
           }
         }
 
-        const bubble = bubbleRef.current
-        // only allow hover interaction for active particles
-        if (nearest && nearest.active && Math.sqrt(nearestDist) <= threshold) {
+  // only allow hover interaction for red/green kinds
+        if (nearest && (nearest.kind === 'red' || nearest.kind === 'green') && Math.sqrt(nearestDist) <= threshold) {
           // hover over a particle
           hoveredRef.current = nearest
           pauseAnimation()
 
-          if (bubble) {
-            // choose side: if particle is left half, show bubble to right, else left
-            const side = nearest.x < rect.width / 2 ? 'right' : 'left'
-            const gap = 12
-            const bubbleLeft = side === 'right' ? Math.min(rect.width - 12, nearest.x + gap) : Math.max(12, nearest.x - gap)
-            const bubbleTop = Math.max(12, nearest.y - nearest.r - 8)
+          // compute viewport coordinates for portal placement
+          const cxLocal = Math.max(12, Math.min(rect.width - 12, Math.round(nearest.x)))
+          const above = nearest.y > 80 // prefer above when there's space
+          const topLocal = above ? Math.round(nearest.y - nearest.r - 12) : Math.round(nearest.y + nearest.r + 12)
+          const pageLeft = Math.round(rect.left + cxLocal)
+          const pageTop = Math.round(rect.top + topLocal)
 
-            bubble.style.display = 'block'
-            bubble.style.opacity = '1'
-            // position the bubble centered above or below the particle using left/top
-            const cx = Math.max(12, Math.min(rect.width - 12, Math.round(nearest.x)))
-            const above = nearest.y > 80 // prefer above when there's space
-            const top = above ? Math.round(nearest.y - nearest.r - 12) : Math.round(nearest.y + nearest.r + 12)
-            bubble.style.left = `${cx}px`
-            bubble.style.top = `${top}px`
-            bubble.style.transform = above ? 'translate(-50%, -100%) scale(1)' : 'translate(-50%, 0) scale(1)'
-            bubble.dataset.side = above ? 'above' : 'below'
-            const textEl = bubble.querySelector('.bubble-text')
-            if (textEl) textEl.textContent = nearest.label
-            else bubble.textContent = nearest.label
-
-            // style inner bubble (larger and liquid-glass in dark per request)
-            const inner = bubble.querySelector('div')
-            if (inner) {
-              inner.style.padding = '10px 14px'
-              inner.style.fontSize = '14px'
-              inner.style.minWidth = '56px'
-              inner.style.textAlign = 'center'
-              inner.style.backdropFilter = 'blur(8px)'
-              if (isDark) {
-                // in dark, use white background and black text (liquid glass-like)
-                inner.style.background = '#ffffff'
-                inner.style.border = '1px solid rgba(0,0,0,0.06)'
-                inner.style.color = '#000'
-              } else {
-                inner.style.background = 'rgba(255,255,255,0.92)'
-                inner.style.border = '1px solid rgba(255,255,255,0.4)'
-                inner.style.color = '#000'
-              }
-            }
-
-            // position and color the tail so it points exactly to the particle
-            const tail = bubble.querySelector('svg')
-            if (tail) {
-              const path = tail.querySelector('path')
-              // place tail centered horizontally relative to bubble (bubble is centered at cx)
-              tail.style.left = '50%'
-              tail.style.transform = 'translateX(-50%)'
-              if (bubble.dataset.side === 'above') {
-                tail.style.bottom = '-6px'
-                tail.style.top = 'auto'
-              } else {
-                tail.style.top = '-6px'
-                tail.style.bottom = 'auto'
-                tail.style.transform += ' translateY(0)'
-              }
-              if (path) {
-                // tail: white in dark mode, black in light mode
-                const fillColor = isDark ? '#ffffff' : '#000000'
-                path.setAttribute('fill', fillColor)
-              }
-            }
-          }
+          // set bubble state (React-driven portal will render it)
+          setBubbleState({
+            visible: true,
+            left: pageLeft,
+            top: pageTop,
+            side: above ? 'above' : 'below',
+            username: nearest.username,
+            kind: nearest.kind,
+            attempts: nearest.attempts,
+          })
         } else {
           // no nearest particle -> hide bubble and resume
           hoveredRef.current = null
-          if (bubble) {
-            bubble.style.opacity = '0'
-            bubble.style.transform = bubble.dataset.side === 'left'
-              ? 'translate(-100%, -100%) scale(0.95)'
-              : 'translate(0, -100%) scale(0.95)'
-            setTimeout(() => {
-              if (bubble) bubble.style.display = 'none'
-            }, 180)
-          }
+          // hide via React state
+          setBubbleState(prev => ({ ...prev, visible: false }))
           resumeAnimation()
         }
       }
 
       mouseLeaveHandler = () => {
         hoveredRef.current = null
-        const bubble = bubbleRef.current
-        if (bubble) {
-          bubble.style.opacity = '0'
-          bubble.style.transform = bubble.dataset.side === 'left'
-            ? 'translate(-100%, -100%) scale(0.95)'
-            : 'translate(0, -100%) scale(0.95)'
-          setTimeout(() => { if (bubble) bubble.style.display = 'none' }, 180)
-        }
+        // hide via React state
+        setBubbleState(prev => ({ ...prev, visible: false }))
         resumeAnimation()
       }
 
@@ -312,6 +308,11 @@ export default function ParticlesBackground() {
       else if (resizeFallbackRef.current) window.removeEventListener("resize", resizeFallbackRef.current)
       if (mouseMoveHandler) canvas.removeEventListener('mousemove', mouseMoveHandler)
       if (mouseLeaveHandler) canvas.removeEventListener('mouseleave', mouseLeaveHandler)
+      // remove bubble portal element
+      if (bubbleRef.current && bubbleRef.current.parentNode) {
+        bubbleRef.current.parentNode.removeChild(bubbleRef.current)
+        bubbleRef.current = null
+      }
     }
   }, [])
 
@@ -322,19 +323,20 @@ export default function ParticlesBackground() {
         className="absolute inset-0 z-0 pointer-events-auto"
         aria-hidden="true"
       />
-      <div
-        ref={bubbleRef}
-        className="absolute z-30 pointer-events-none opacity-0"
-        style={{ left: 0, top: 0, display: 'none', transform: 'translate(-50%, -100%) scale(0.95)', transition: 'opacity 180ms cubic-bezier(.2,.9,.2,1), transform 180ms cubic-bezier(.2,.9,.2,1)', transformOrigin: 'center bottom', overflow: 'visible' }}
-      >
-        <div className="relative rounded-lg px-3 py-2 text-sm font-semibold shadow-lg bg-white/60 dark:bg-gray-900/70 border border-white/30 dark:border-gray-700 backdrop-blur-md text-black dark:text-white" style={{ overflow: 'visible' }}>
-          <span className="bubble-text">99</span>
-        </div>
-        {/* tail - moved outside inner box to avoid clipping */}
-        <svg className="absolute text-black dark:text-white" style={{ bottom: -6, width: 14, height: 10, left: '50%', transform: 'translateX(-50%)' }} viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-          <path d="M0 0 L4 6 L8 0 Z" fill="currentColor" />
-        </svg>
-      </div>
+      {/* bubble is rendered below via React Portal (attached to document.body) */}
+      {canvasRef.current && canvasRef.current.dataset.portalroot === '1' && createPortal(
+        <Bubble
+          visible={bubbleState.visible}
+          left={bubbleState.left}
+          top={bubbleState.top}
+          side={bubbleState.side}
+          username={bubbleState.username}
+          kind={bubbleState.kind}
+          attempts={bubbleState.attempts}
+        />,
+        // portal target
+        bubbleRef.current
+      )}
     </>
   )
 }
