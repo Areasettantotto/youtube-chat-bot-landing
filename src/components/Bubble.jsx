@@ -20,6 +20,7 @@ export default function Bubble({ visible, left, top, side, username, kind, attem
     <div role="status" aria-hidden={!visible} className={`absolute z-30 pointer-events-none ${visible ? 'opacity-100' : 'opacity-0'}`} style={containerStyle}>
   <div className={`relative rounded-lg px-3 py-2 text-sm font-semibold shadow-lg bg-white/90 dark:bg-white border border-gray-200 dark:border-gray-700 backdrop-blur-md text-black ${visible ? 'animate-pop-fade' : ''}`} style={{ overflow: 'visible', transition: 'transform 160ms cubic-bezier(.2,.9,.2,1)' }}>
         <span className="bubble-text">
+          <span className="inline-block mr-2 align-middle" aria-hidden>👤</span>
           {username}
           <br />
           {kind === 'red' ? (<span className="text-xs font-normal">❌ attempts exhausted</span>) : null}
